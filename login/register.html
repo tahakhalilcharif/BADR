@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/styleS.css" />
+    <title>
+      BADR SINGUP &#8211; Banque de l’Agriculture et du Développement Rural
+    </title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box form-box">
+        <header>devenir client</header>
+        <form action="" method="post">
+          <div class="field input">
+            <label for="Name"> Nom </label>
+            <input type="text" name="Nom" id="nom" autocomplete="off" required >
+          </div>
+          <div class="field input">
+            
+            <label for="Prenom">Prenom </label>
+            <input type="text" name="Prenom" id="prenom"  autocomplete="off" required >
+          </div>
+          <div class="field input">
+            <label for="lieu de naissance ">lieu de naissance </label>
+            <input type="text" name="lieu de naissance " id="lieu_N"  autocomplete="off" required >
+          </div>
+          <div class="field input">
+            <label for="date de naissance ">Date de naissance </label>
+            <input type="date" name="date de naissance " id="date_N" required >
+          </div>
+
+          <div class="field input">
+          <label for="telephone">Numéro de téléphone :</label>
+          <input type="tel" id="telephone" name="telephone" placeholder=" 023-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        </div>
+          <div class="field input">
+            <label for="adresse">Adresse </label>
+            <input type="text" name="adresse" id="adresse" autocomplete="off" required >
+          </div>
+          <div class="field input">
+            <label for="wilaya">wilaya </label>
+            <input type="text" name="wilaya" id="wilaya" autocomplete="off" required >
+          </div>
+          <div class="field input">
+            <label for="commune">Commune</label>
+            <input type="text" name="Commune" id="commune" autocomplete="off" required >
+          </div>
+
+          <div class="field input">
+            <label for="email"> email </label>
+            <input type="text" name="email" id="email" autocomplete="off" required >
+          </div>
+          <div class="field input">
+            <label for="password"> password</label>
+            <input type="password" name="password " id="pwd" autocomplete="off" required >
+        </div>
+        <div class="liste">
+            <label for="compte">  vous êtes?</label>
+            <ul>
+                <li>
+                  <input type="radio" value="physique" name="option" id="categorie" />
+                  <label for="physique">Physique</label>
+                </li>
+                <li>
+                  <input type="radio" value="entreprise" name="option" id="categorie" />
+                  <label for="entreprise">Entreprise</label>
+                </li>
+              
+              </ul>
+        </div>
+
+          <div class="field">
+            <input
+              type="submit"
+              class="btn"
+              name="submit"
+              value="Envoyé" 
+              required
+            />
+            
+          </div>
+          <div class="links">
+            vous êtes deja un membre ? <a href="index.html"> Se connecter </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

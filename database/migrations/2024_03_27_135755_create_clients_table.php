@@ -7,7 +7,7 @@ class CreateClientsTable extends Migration
 {
     public function up()
     {
-        Schema::create('client', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->id('id_client');
             $table->string('nom', 100);
             $table->string('prenom', 100);
@@ -22,11 +22,12 @@ class CreateClientsTable extends Migration
             $table->string('daira', 100);
             $table->enum('categorie', ['Personne Physique', 'Personne Morale']);
             $table->enum('statut', ['vivant', 'mort'])->default('vivant');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('client');
+        Schema::dropIfExists('clients');
     }
 }

@@ -8,7 +8,7 @@ class CreateComptesTable extends Migration
 {
     public function up()
     {
-        Schema::create('compte', function (Blueprint $table) {
+        Schema::create('comptes', function (Blueprint $table) {
             $table->id('id_cmpt');
             $table->foreignId('id_client')->nullable();
             $table->double('solde');
@@ -30,6 +30,6 @@ class CreateComptesTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('compte');
+        Schema::dropIfExists('comptes');
     }
 }

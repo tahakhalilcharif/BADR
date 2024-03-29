@@ -8,7 +8,7 @@ class CreateProduitsTable extends Migration
 {
     public function up()
     {
-        Schema::create('produit', function (Blueprint $table) {
+        Schema::create('produits', function (Blueprint $table) {
             $table->id('id_prd');
             $table->foreignId('id_carte');
             $table->foreignId('id_compte');
@@ -24,6 +24,6 @@ class CreateProduitsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('produit');
+        Schema::dropIfExists('produits');
     }
 }

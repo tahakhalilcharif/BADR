@@ -8,7 +8,7 @@ class CreateDemandesTable extends Migration
 {
     public function up()
     {
-        Schema::create('demande', function (Blueprint $table) {
+        Schema::create('demandes', function (Blueprint $table) {
             $table->id('id_demande');
             $table->foreignId('id_client');
             $table->foreignId('id_carte');
@@ -26,6 +26,6 @@ class CreateDemandesTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('demande');
+        Schema::dropIfExists('demandes');
     }
 }

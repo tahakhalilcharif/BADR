@@ -8,7 +8,7 @@ class CreateCartesTable extends Migration
 {
     public function up()
     {
-        Schema::create('carte', function (Blueprint $table) {
+        Schema::create('cartes', function (Blueprint $table) {
             $table->id('id_carte');
             $table->string('libelle', 100)->nullable();
             $table->decimal('plafond_atm', 10, 2)->nullable();
@@ -19,6 +19,6 @@ class CreateCartesTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('carte');
+        Schema::dropIfExists('cartes');
     }
 }

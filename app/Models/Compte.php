@@ -2,10 +2,37 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Client;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Compte extends Model
 {
     use HasFactory;
+
+    protected $table = 'comptes';
+
+    protected $primaryKey = 'id_cmpt';
+
+    protected $fillable = [
+        'id_client',
+        'solde',
+        'date_ouv',
+        'derniere_trn',
+        'statut',
+        'interdit_au_credit',
+        'interdit_au_debit',
+        'banque',
+        'agence',
+        'num_serie',
+        'cle',
+        'num_cmt',
+        'classe',
+    ];
+    
+    //Get the client associated with the account.
+    public function client()
+    {
+        return $this->belongsTo(Client::class, 'id_client');
+    }
 }

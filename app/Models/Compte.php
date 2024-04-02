@@ -29,10 +29,22 @@ class Compte extends Model
         'num_cmt',
         'classe',
     ];
+
+    public $timestamps = false;
     
     //Get the client associated with the account.
     public function client()
     {
         return $this->belongsTo(Client::class, 'id_client');
     }
+
+    public function hasActiveAccount()
+    {
+        return $this->statut === 'actif';
+    }
+
+    public function ActivateAccount(){
+        return $this->statut='actif';
+    }
+
 }

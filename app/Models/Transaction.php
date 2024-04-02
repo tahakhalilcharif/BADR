@@ -22,6 +22,8 @@ class Transaction extends Model
         'date_trn',
     ];
 
+    public $timestamps = false;
+
     /**
      * Get the source account of the transaction.
      */

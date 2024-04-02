@@ -15,7 +15,13 @@
         
             <label for="prenom">Prénom</label><br>
             <input type="text" name="prenom" id="prenom" placeholder="Prénom" required><br>
-        
+
+            <label for="sexe">Sexe</label><br>
+            <select name="sexe" id="sexe" placeholder="Sexe">
+                <option value="Homme">Homme</option>
+                <option value="Femme">Femme</option>
+            </select><br>
+
             <label for="date_n">Date de Naissance</label><br>
             <input type="date" name="date_n" id="date_n" placeholder="Date de Naissance"required><br>
         

@@ -24,6 +24,8 @@ class Demande extends Model
         'statut',
     ];
 
+    public $timestamps = false;
+    
     /**
      * Get the client associated with the demand.
      */

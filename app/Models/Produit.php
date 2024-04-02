@@ -21,6 +21,8 @@ class Produit extends Model
         'statut',
     ];
 
+    public $timestamps = false;
+
     /**
      * Get the card associated with the product.
      */

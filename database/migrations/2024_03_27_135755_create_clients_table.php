@@ -13,6 +13,7 @@ class CreateClientsTable extends Migration
             $table->string('prenom', 100);
             $table->integer('revenu')->default(0);
             $table->date('date_N');
+            $table->enum('sexe',['Homme' , 'Femme']);
             $table->string('lieu_N', 100);
             $table->string('email', 100);
             $table->string('num_tlf', 100);

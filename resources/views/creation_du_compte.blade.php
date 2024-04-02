@@ -1,3 +1,4 @@
+@auth
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +20,25 @@
             </ul>
         </nav>
     </header>
-    <form action="/creer_compte" method="POST">
-        
+    <form action="/open_account" method="POST">
+        @csrf
+        <div>
+            <label for="classe">Classe:</label>
+            <select name="classe" id="classe">
+                <option value="201">201</option>
+                <option value="202">202</option>
+                <option value="300">300</option>
+                <option value="390">390</option>
+                <option value="397">397</option>
+                <option value="398">398</option>
+            </select>
+        </div>
+        <div>
+            <label for="agence">Agence:</label>
+            <input type="number" id="agence" name="agence" required pattern="\d{5}" title="Please enter a 5-digit number">
+        </div>
+        <button type="submit">Open Account</button>
     </form>
 </body>
 </html>
+@endauth

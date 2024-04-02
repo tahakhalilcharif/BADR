@@ -18,6 +18,8 @@ class Employe extends Model
         'role',
     ];
 
+    public $timestamps = false;
+
     //Get the user associated with the employee.  
     public function user()
     {

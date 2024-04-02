@@ -13,6 +13,7 @@ class Client extends Model
         'nom',
         'prenom',
         'revenu',
+        'sexe',
         'date_N',
         'lieu_N',
         'email',
@@ -31,4 +32,29 @@ class Client extends Model
     ];
 
     public $timestamps = false;
+
+    /**
+     * Define a one-to-one relationship with Compte model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+    */
+
+
+    public function comptes()
+    {
+        return $this->hasMany(Compte::class, 'id_client');
+    }
+
+    public function hasActiveAccount()
+    {
+        return $this->compte && $this->compte->statut === 'actif';
+    }
+
+    public function showComptes(Request $request)
+    {
+        $client = $request->user()->client;
+        $comptes = $client->comptes;
+
+        return view('comptes.show', compact('comptes'));
+    }
 }

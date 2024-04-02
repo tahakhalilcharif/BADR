@@ -15,9 +15,9 @@ class CreateProduitsTable extends Migration
             $table->date('date_expiration');
             $table->foreignId('id_demande')->nullable();
             $table->index('id_compte');
-            $table->foreign('id_carte')->references('id_carte')->on('carte');
-            $table->foreign('id_compte')->references('id_cmpt')->on('compte');
-            $table->foreign('id_demande')->references('id_demande')->on('demande');
+            $table->foreign('id_carte')->references('id_carte')->on('cartes');
+            $table->foreign('id_compte')->references('id_cmpt')->on('comptes');
+            $table->foreign('id_demande')->references('id_demande')->on('demandes');
             $table->enum('statut' , ['valide', 'expiré']);
         });
     }

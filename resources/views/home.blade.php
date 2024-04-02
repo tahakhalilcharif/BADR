@@ -25,6 +25,7 @@
         @csrf
         <button>Log out</button>
     </form>
+
     @else
     <h1>you are logged out</h1>
     <form action="/login" method="POST">

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\SessionController;
 
 class ClientController extends Controller
 {
@@ -13,6 +15,7 @@ class ClientController extends Controller
             'nom' => 'required|string|max:100',
             'prenom' => 'required|string|max:100',
             'date_n' => 'required|date',
+            'sexe'=>['required',Rule::in(['Homme' ,'Femme'])],
             'lieu_n' => 'required|string|max:100',
             'numero_telephone' => 'required|string|max:100',
             'adresse' => 'required|string|max:100',
@@ -22,11 +25,13 @@ class ClientController extends Controller
             'categorie' => ['required', Rule::in(['Personne Physique', 'Personne Morale'])],
             'statut' => ['required', Rule::in(['vivant', 'mort'])],
         ]);
+        $userEmail = Auth::user()->email;
 
         $client = Client::create([
             'nom' => $validatedData['nom'],
             'prenom' => $validatedData['prenom'],
             'date_N' => $validatedData['date_n'],
+            'sexe'=> $validatedData['sexe'],
             'lieu_N' => $validatedData['lieu_n'],
             'num_tlf' => $validatedData['numero_telephone'],
             'adresse' => $validatedData['adresse'],
@@ -36,10 +41,10 @@ class ClientController extends Controller
             'categorie' => $validatedData['categorie'],
             'statut' => $validatedData['statut'],
             'user_id' => auth()->id(),
-            'email' => auth()->user()->email,
+            'email' => $userEmail,
         ]);
-
-        return redirect('/');
-
+        
+        auth()->logout();
+        return redirect('/login');
     }
 }

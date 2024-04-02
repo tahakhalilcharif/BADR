@@ -39,4 +39,23 @@ class EventServiceProvider extends ServiceProvider
     {
         return false;
     }
+
+    /**
+     * Register the listeners for the defined events.
+     *
+     * @return void
+     */
+    protected function listen()
+    {
+        // ...
+
+        User::created(function (User $user) {
+            $token = Str::random(60);
+
+            $user->verification_token = $token;
+            $user->save();
+
+            Mail::to($user->email)->send(new VerificationEmail($user, $token));
+        });
+    }
 }

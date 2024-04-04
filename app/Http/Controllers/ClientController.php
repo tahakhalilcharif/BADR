@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Compte;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
@@ -46,5 +47,15 @@ class ClientController extends Controller
         
         auth()->logout();
         return redirect('/login');
+    }
+
+    public function show_info(){
+        $userID = Auth::user()->id;
+        if($userID){
+        $client = Client::where('user_id',$userID)->first();
+        $comptes = Compte::where('id_client',$client['id_client'])->get();
+        return view('compte.info_client',['client'=>$client,'comptes'=>$comptes]);
+    }
+    return view('compte.info_client');
     }
 }

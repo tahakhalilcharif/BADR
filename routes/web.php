@@ -33,24 +33,14 @@ Route::get('/ouvrir_compte',function(){
 });
 
 Route::get('/compte/{num_cmt}', [CompteController::class, 'show_info_compte'])->name('compte.info_compte');
-
-Route::get('/compte', function(){
-    $userID = Auth::user()->id;
-    if($userID){
-        $client = Client::where('user_id',$userID)->first();
-        $comptes = Compte::where('id_client',$client['id_client'])->get();
-        return view('compte.info_client',['client'=>$client,'comptes'=>$comptes]);
-    }
-    return view('compte.info_client');
-});
+Route::get('/compte', [ClientController::class, 'show_info'])->name('compte.info_client');
+Route::get('/compte/activate/{num_cmt}', [CompteController::class, 'activate'])->name('compte.activate');
+Route::match(['get', 'post'], '/compte/activation/{num_cmt}/{activation_code}', [CompteController::class, 'activationPage'])->name('compte.activation_page');
+Route::post('/compte/process-activation/{num_cmt}/{activation_code}', [CompteController::class, 'processActivation'])->name('compte.process_activation');
+Route::get('/compte/{id}/products', [CompteController::class, 'showProducts'])->name('compte.show_products');
 
 Route::post('/inscrire' , [InscriptionController::class , 'inscrire']);
 Route::post('/logout', [SessionController::class , 'logout']);
 Route::post('/login', [SessionController::class , 'login']);
 Route::post('/nv_client',[ClientController::class ,'nv_client']);
 Route::post('/open_account',[CompteController::class,'new_account']);
-
-//Auth::routes();
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Route::post('email/verify', [VerificationController::class, 'verify'])->name('verification.verify');
-

@@ -1,20 +1,23 @@
-@auth
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Account information</h1>
+@extends('layouts.layout_client')
+
+@section('content')
+    @auth
+    @if($compte->statut === 'actif')
     <div class="container">
         <h1>Account Details</h1>
         <p>ID: {{ $compte->num_cmt }}</p>
         <p>Solde: {{ $compte->solde }}</p>
-        <!-- Add more details as needed -->
+
+        @if ($compte->produits()->exists())
+        <form action="{{ route('compte.show_products', ['id' => $compte->id_cmpt]) }}" method="GET">
+            @csrf
+            <button type="submit">View Products</button>
+        </form>
+        @endif
+
     </div>
-</body>
-</html>
-@endauth
+    @else
+    <h1>Please Activate Your Account.</h1>
+    @endif
+    @endauth
+@endsection

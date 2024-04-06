@@ -5,9 +5,9 @@
     @if($compte->statut === 'actif')
     <div class="container">
         <h1>Account Details</h1>
-        <p>ID: {{ $compte->num_cmt }}</p>
-        <p>Solde: {{ $compte->solde }}</p>
-
+        <p>Account number : {{ $compte->num_cmt }}</p>
+        <p>Current Balance : {{ $compte->solde }}</p>
+        <p>Type : {{ $compte->classeLibelle()}}</p>
         @if ($compte->produits()->exists())
         <form action="{{ route('compte.show_products', ['id' => $compte->id_cmpt]) }}" method="GET">
             @csrf

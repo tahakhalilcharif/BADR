@@ -2,11 +2,12 @@
 
 @section('content')
     <div class="container">
-        <h1>Products Associated with Account {{ $compte->num_cmt }}</h1>
+        <h3>Products Associated with Account {{ $compte->num_cmt }}</h3>
         @if ($compte->produits->isNotEmpty())
             <ul>
                 @foreach ($compte->produits as $produit)
-                    <li>{{ $produit->id_prd }}</li>
+                    <li>{{ $produit->carte->libelle }}</li>
+
                 @endforeach
             </ul>
         @else

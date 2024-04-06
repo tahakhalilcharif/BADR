@@ -14,7 +14,7 @@ class CompteController extends Controller
     public function new_account(Request $request)
     {
         $accountData = $request->validate([
-            'classe' => 'required|in:201,202,300,390,397,398',
+            'classe' => 'required|in:201,202,300,251,200,255',
             'agence' => 'required|digits:5',
         ]);
 

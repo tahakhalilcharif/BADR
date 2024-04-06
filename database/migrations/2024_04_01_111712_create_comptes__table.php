@@ -24,9 +24,33 @@ class CreateComptesTable extends Migration
             $table->string('num_cmt', 20)->storedAs("CONCAT(banque, agence, num_serie, classe, cle)");
             $table->index('id_client');
             $table->foreign('id_client')->references('id_client')->on('clients');
-            $table->enum('classe' , ['201', '202', '300', '390', '397', '398']);
+            $table->enum('classe' , ['201', '202', '300', '251', '200', '255']);
+        });
+
+    
+        Schema::table('produits', function (Blueprint $table) {
+            $table->string('numero_carte', 16)->unique()->default($this->generateRandomCardNumber());
+            $table->string('cvv2', 3)->default($this->generateRandomCVV());
+            $table->string('code_pin', 4)->default($this->generateRandomPIN());
         });
     }
+
+    private function generateRandomCardNumber()
+    {
+        return '6280' . rand(100000000000000, 999999999999999);
+    }
+
+    private function generateRandomCVV()
+    {
+        return str_pad(rand(0, 999), 3, '0', STR_PAD_LEFT);
+    }
+
+    private function generateRandomPIN()
+    {
+        return str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
+    }
+
+    
 
     public function down()
     {

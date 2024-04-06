@@ -10,17 +10,30 @@
     <title>@yield('title')</title>
 </head>
 <body>
-    <header>
-        <nav class="nav">
-            <ul>
-                <li class="nav-list-item" > <a href="#accueil"></a>Accueil</li>
-                <li class="nav-list-item" > <a href="#qui-sommes-nous"></a>Qui sommes nous ?</li>
-                <li class="nav-list-item" > <a href="#particuliers"></a>Particuliers</li>
-                <li class="nav-list-item" > <a href="#services"></a>Services</li>
-                <li class="nav-list-item" > <a href="#banque-en-ligne"></a>Banque en ligne</li>
-            </ul>
-        </nav>
-    </header>
+    @auth
+        <header>
+            <nav class="nav">
+                <ul>
+                    <li class="nav-list-item" ><a href="#home">Home</a></li>
+                    <li class="nav-list-item" ><a href="#products">Products</a></li>
+                    <li class="nav-list-item" ><a href="#services">Services</a></li>
+                    <li class="nav-list-item" ><a href="#my_information">My Information</a></li>
+                </ul>
+            </nav>
+        </header>
+    @else
+        <header>
+            <nav class="nav">
+                <ul>
+                    <li class="nav-list-item" > <a href="#accueil"></a>Accueil</li>
+                    <li class="nav-list-item" > <a href="#qui-sommes-nous"></a>Qui sommes nous ?</li>
+                    <li class="nav-list-item" > <a href="#particuliers"></a>Particuliers</li>
+                    <li class="nav-list-item" > <a href="#services"></a>Services</li>
+                    <li class="nav-list-item" > <a href="#banque-en-ligne"></a>Banque en ligne</li>
+                </ul>
+            </nav>
+        </header>
+    @endauth
     
     <div class="container">
         @yield('content')

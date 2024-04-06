@@ -14,6 +14,9 @@ class CreateProduitsTable extends Migration
             $table->foreignId('id_compte');
             $table->date('date_expiration');
             $table->foreignId('id_demande')->nullable();
+            $table->string('numero_carte', 16)->unique();
+            $table->string('cvv2', 3);
+            $table->string('code_pin', 4);
             $table->index('id_compte');
             $table->foreign('id_carte')->references('id_carte')->on('cartes');
             $table->foreign('id_compte')->references('id_cmpt')->on('comptes');

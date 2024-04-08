@@ -8,7 +8,7 @@ class CreateTransactionsTable extends Migration
 {
     public function up()
     {
-        Schema::create('transaction', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->id('trn_ref_no');
             $table->foreignId('id_compte_source')->nullable();
             $table->foreignId('id_compte_destination')->nullable();
@@ -17,13 +17,13 @@ class CreateTransactionsTable extends Migration
             $table->datetime('date_trn')->nullable();
             $table->index('id_compte_source');
             $table->index('id_compte_destination');
-            $table->foreign('id_compte_source')->references('id_cmpt')->on('compte');
-            $table->foreign('id_compte_destination')->references('id_cmpt')->on('compte');
+            $table->foreign('id_compte_source')->references('id_cmpt')->on('comptes');
+            $table->foreign('id_compte_destination')->references('id_cmpt')->on('comptes');
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('transaction');
+        Schema::dropIfExists('transactions');
     }
 }

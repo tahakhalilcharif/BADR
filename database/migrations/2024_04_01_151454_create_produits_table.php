@@ -8,22 +8,22 @@ class CreateProduitsTable extends Migration
 {
     public function up()
     {
-        Schema::create('produit', function (Blueprint $table) {
+        Schema::create('produits', function (Blueprint $table) {
             $table->id('id_prd');
             $table->foreignId('id_carte');
             $table->foreignId('id_compte');
             $table->date('date_expiration');
             $table->foreignId('id_demande')->nullable();
             $table->index('id_compte');
-            $table->foreign('id_carte')->references('id_carte')->on('carte');
-            $table->foreign('id_compte')->references('id_cmpt')->on('compte');
-            $table->foreign('id_demande')->references('id_demande')->on('demande');
+            $table->foreign('id_carte')->references('id_carte')->on('cartes');
+            $table->foreign('id_compte')->references('id_cmpt')->on('comptes');
+            $table->foreign('id_demande')->references('id_demande')->on('demandes');
             $table->enum('statut' , ['valide', 'expiré']);
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('produit');
+        Schema::dropIfExists('produits');
     }
 }

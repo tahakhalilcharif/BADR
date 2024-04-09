@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Carte;
+use App\Models\Compte;
+use App\Models\Demande;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Produit extends Model
 {
@@ -46,4 +49,5 @@ class Produit extends Model
     {
         return $this->belongsTo(Demande::class, 'id_demande');
     }
+    
 }

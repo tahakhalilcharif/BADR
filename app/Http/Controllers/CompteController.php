@@ -108,11 +108,12 @@ class CompteController extends Controller
     public function showProducts($id)
 {
     $compte = Compte::with('produits')->find($id);
+    $client = Client::where('id_client',$compte->id_client)->first();
 
     if (!$compte) {
         return redirect()->back()->with('error', 'Compte not found.');
     }
 
-    return view('compte.show_products', compact('compte'));
+    return view('compte.show_products', compact('compte' ,'client'));
 }
 }

@@ -20,6 +20,7 @@
         </nav>
     </header>
     @auth
+
     <div class="container">
         <form action="/logout" method="POST">
             @csrf

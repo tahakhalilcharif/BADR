@@ -1,5 +1,4 @@
 @extends('layouts.layout_home')
-
 @section('content')
     @auth
     <form action="/logout" method="POST">
@@ -11,7 +10,6 @@
         @csrf
         <button type="submit" class="btn btn-primary">View Account</button>
     </form>
-    
 
     @else
     <h1>you are logged out</h1>

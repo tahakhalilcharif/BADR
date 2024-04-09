@@ -42,7 +42,7 @@ class SessionController extends Controller
                 }
             }else{
                 $request->session()->regenerate();
-                return redirect('/creer_client');//register as a client if the user isn't a client
+                return redirect('/creer_client'); //register as a client if the user isn't a client
             }
             
             

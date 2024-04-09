@@ -1,4 +1,4 @@
-@extends('layouts.layout_client')
+@extends('layouts.layout_home')
 
 @section('content')
     @auth

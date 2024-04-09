@@ -14,10 +14,16 @@
         <header>
             <nav class="nav">
                 <ul>
-                    <li class="nav-list-item" ><a href="#home">Home</a></li>
-                    <li class="nav-list-item" ><a href="#products">Products</a></li>
-                    <li class="nav-list-item" ><a href="#services">Services</a></li>
-                    <li class="nav-list-item" ><a href="#my_information">My Information</a></li>
+                    <li class="nav-list-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="nav-list-item"><a href="{{ route('products') }}">Products</a></li>
+                    <li class="nav-list-item"><a href="{{ route('services') }}">Services</a></li>
+                    <li class="nav-list-item"><a href="{{ route('compte.info_client') }}">My Information</a></li>
+                    <li class="nav-list-item">
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <button >Log out</button>
+                        </form>
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -25,11 +31,11 @@
         <header>
             <nav class="nav">
                 <ul>
-                    <li class="nav-list-item" > <a href="#accueil"></a>Accueil</li>
-                    <li class="nav-list-item" > <a href="#qui-sommes-nous"></a>Qui sommes nous ?</li>
-                    <li class="nav-list-item" > <a href="#particuliers"></a>Particuliers</li>
-                    <li class="nav-list-item" > <a href="#services"></a>Services</li>
-                    <li class="nav-list-item" > <a href="#banque-en-ligne"></a>Banque en ligne</li>
+                    <li class="nav-list-item" > <a href="{{ route('home') }}"></a>Accueil</li>
+                    <li class="nav-list-item" > <a href="{{ route('qui-sommes-nous') }}"></a>Qui sommes nous ?</li>
+                    <li class="nav-list-item" > <a href="{{ route('particuliers') }}"></a>Particuliers</li>
+                    <li class="nav-list-item" > <a href="{{ route('services') }}"></a>Services</li>
+                    <li class="nav-list-item" > <a href="{{ route('banque-en-ligne') }}"></a>Banque en ligne</li>
                 </ul>
             </nav>
         </header>

@@ -12,7 +12,7 @@
         <div class="card">
             <div class="card-inner">
                 <div class="front">
-                    <img src="{{ asset('images/map.png') }}" alt="map" class="map-img">
+                    <img src="{{ asset('images/titanium.jpg') }}" alt="titanium.jpg" class="map-img">
                     <div class="row">
                         <img src="{{ asset('images/grey_chip.jpg') }}" alt="grey chip" width="60px">
                         <img src="{{ asset('images/badr.png') }}" alt="badr" width="80px">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="back">
-                    <img src="{{ asset('images/map.png') }}" alt="map" class="map-img">
+                    <img src="{{ asset('images/titanium.jpg') }}" alt="titanium.jpg" class="map-img">
                     <div class="bar"></div>
                     <div class="row card-cvv2">
                         <div>

@@ -13,7 +13,7 @@ use App\Http\Controllers\Auth\VerificationController;
 
 Route::get('/' , function(){
     return view('home');
-});
+})->name('home');
 Route::get('/inscription', function () {
     return view('inscription');
 });
@@ -31,6 +31,17 @@ Route::get('/creer_client' , function(){
 Route::get('/ouvrir_compte',function(){
     return view('creation_du_compte');
 });
+Route::get('/products', function () {
+    return view('products');
+})->name('products');
+
+Route::get('/services', function () {
+    return view('services');
+})->name('services');
+
+Route::get('/my_information', function () {
+    return view('info_client');
+})->name('my_information');
 
 Route::get('/compte/{num_cmt}', [CompteController::class, 'show_info_compte'])->name('compte.info_compte');
 Route::get('/compte', [ClientController::class, 'show_info'])->name('compte.info_client');

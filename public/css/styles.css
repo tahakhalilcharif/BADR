@@ -33,3 +33,11 @@ header nav a {
   padding: 5px 1px;
   font-family :sans-serif;
 }
+
+.nav-list-item form button {
+  background: none;
+  border: none;
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
+}

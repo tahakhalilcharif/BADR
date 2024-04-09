@@ -43,6 +43,26 @@
     
     <div class="container">
         @yield('content')
+        <button id="chat-button" class="floating-button">
+            <img src="{{ asset('images/chat.png') }}" alt="Chat" width="60px" height="60px">
+        </button>
+        
+        <div id="chat-window" class="chat-window">
+            <div class="chat-header">
+                <h3>Chat</h3>
+                <p>Powered by GPT-2</p>
+                <button id="chat-close-button" class="chat-close-button">
+                    <img src="{{ asset('images/close.png') }}" alt="Close" width="20px" height="20px">
+                </button>
+            </div>
+            <div class="chat-messages">
+                <!-- Chat messages will be added here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chat-input-field" placeholder="Type your message here...">
+                <button id="chat-send-button" class="chat-send-button">Send</button>
+            </div>
+        </div>
     </div>
 
     <footer>
@@ -76,6 +96,78 @@
             <p>&copy; 2023 Copyrights BADR BANK by Digital Ways</p>
         </div>
     </footer>
-
+    <script>
+        document.getElementById('chat-button').addEventListener('click', function() {
+            document.getElementById('chat-window').style.display = 'block';
+        });
+    
+        document.getElementById('chat-close-button').addEventListener('click', function() {
+            document.getElementById('chat-window').style.display = 'none';
+        });
+    </script>
+    <script>
+        const chatWindow = document.querySelector('#chat-window');
+        const chatMessages = document.querySelector('.chat-messages');
+        const chatInputField = document.querySelector('#chat-input-field');
+        const chatSendButton = document.querySelector('.chat-send-button');
+    
+        chatSendButton.addEventListener('click', async function() {
+            const message = chatInputField.value.trim();
+    
+            if (message) {
+                addChatMessage('user', message);
+                const token = document.querySelector('#chat-token').value;
+                const formData = new FormData();
+                formData.append('message', message);
+                
+                const response = await fetch({{route('send_message')}}, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message })
+                });
+    
+                if (response.ok) {
+                    // Get the chatbot's response from the backend
+                    const responseData = await response.json();
+                    const responseText = responseData.response;
+    
+                    addChatMessage('bot', responseText);
+                } else {
+                    addChatMessage('bot', 'An error occurred. Please try again later.');
+                }
+    
+                chatInputField.value = '';
+            }
+        });
+    
+        function addChatMessage(sender, message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-message');
+            messageDiv.classList.add(sender);
+    
+            const messageSpan = document.createElement('span');
+            messageSpan.textContent = message;
+    
+            messageDiv.appendChild(messageSpan);
+            chatMessages.appendChild(messageDiv);
+    
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    
+        // Show/hide the chat window
+        const chatButton = document.querySelector('#chat-button');
+        const chatCloseButton = document.querySelector('#chat-close-button');
+    
+        chatButton.addEventListener('click', function() {
+            chatWindow.style.display = 'block';
+        });
+    
+        chatCloseButton.addEventListener('click', function() {
+            chatWindow.style.display = 'none';
+        });
+    </script>
+    
 </body>
 </html>

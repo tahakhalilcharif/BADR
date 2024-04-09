@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompteController;
+use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\Auth\VerificationController;
@@ -55,3 +56,8 @@ Route::post('/logout', [SessionController::class , 'logout']);
 Route::post('/login', [SessionController::class , 'login']);
 Route::post('/nv_client',[ClientController::class ,'nv_client']);
 Route::post('/open_account',[CompteController::class,'new_account']);
+
+//for chatbot
+Route::post('send_message', [ChatbotController::class, 'sendMessage'])->name('send_message');
+
+Route::get('/chatbot',[ChatbotController::class ,'index']);

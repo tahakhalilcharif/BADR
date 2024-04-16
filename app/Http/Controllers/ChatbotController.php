@@ -1,35 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use GeminiAPI\Client;
 use Illuminate\Http\Request;
-use \OpenAI\Client;
-use \OpenAI\Transporter\GuzzleTransporter; // Import the GuzzleTransporter class
+use Illuminate\Support\Facades\Http;
 
 class ChatbotController extends Controller
 {
-    public function index()
+    public function handleWebhook(Request $request)
     {
-        $yourApiKey = "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";
-
-        // Create an instance of GuzzleTransporter with your API key
-        $transporter = new GuzzleTransporter($yourApiKey);
+        // Process the user's message and return a response
+        $userInput = $request->input('message');
+        // Your processing logic here...
         
-        // Create an instance of the OpenAI client with the transporter
-        $client = new Client($transporter);
-
-        // Call the completions endpoint
-        $result = $client->completions()->create([
-            'model' => 'text-davinci-003',
-            'messages' => [
-                [
-                    'role' => 'user',
-                    'content' => 'Can i open a bank account',
-                ]
-            ],
-        ]);
-
-        // Output the response
-        echo $result->choices[0]->message->content;
+        // Return a response (e.g., as JSON)
+        return response()->json(['text' => 'Response from Laravel']);
     }
 }

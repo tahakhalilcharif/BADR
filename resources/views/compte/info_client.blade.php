@@ -1,14 +1,28 @@
-@extends('layouts.layout_client')
+@extends('layouts.layout_home')
 
 @section('content')
     <div style="border: 2px solid rgb(14, 110, 38);">
-        <h1>Welcome, {{ auth()->user()->name }}</h1>
-        <h2>Your Information:</h2>
+        <h1>My Account</h1>
+        <div style="border: 4px solid rgb(14, 146, 47);"></div>
+        <h2>My Information:</h2>
         <p>Name: {{ $client->nom }} {{ $client->prenom }}</p>
         <p>Phone Number: {{ $client->num_tlf }}</p>
         <p>Email: {{ $client->email }}</p>
         <p>Address: {{ $client->adresse }}</p>
+    </div>
 
+    <div style="border: 2px solid rgb(14, 110, 38);">
+        <h2>Account Actions:</h2>
+        <ul>
+            <li><a href="{{ route('my_information') }}">My Information</a></li>
+            <li><a href="{{ route('change_password') }}">Change Password</a></li>
+            <li><a href="{{ route('change_email') }}">Change Email</a></li>
+            <li><a href="{{ route('change_phone_number') }}">Change Phone Number</a></li>
+        </ul>
+    </div>
+
+    <div style="border: 2px solid rgb(14, 110, 38);">
+        <h2>Accounts:</h2>
         <table>
             <thead>
                 <tr>

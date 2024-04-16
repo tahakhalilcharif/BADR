@@ -1,20 +1,20 @@
 <?php
 
-use App\Models\Client;
-use App\Models\Compte;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompteController;
 use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\InscriptionController;
-use App\Http\Controllers\Auth\VerificationController;
 
-
-Route::get('/' , function(){
+// Home page
+Route::get('/', function () {
     return view('home');
 })->name('home');
+
+// Authentication routes
 Route::get('/inscription', function () {
     return view('inscription');
 });
@@ -23,15 +23,20 @@ Route::get('/login', function () {
     return view('login');
 });
 
+// Account creation routes
 Route::get('/creer_compte', function () {
     return view('creation_du_compte');
 });
-Route::get('/creer_client' , function(){
+
+Route::get('/creer_client', function () {
     return view('creation_du_client');
 });
-Route::get('/ouvrir_compte',function(){
+
+Route::get('/ouvrir_compte', function () {
     return view('creation_du_compte');
 });
+
+// Products and services routes
 Route::get('/products', function () {
     return view('products');
 })->name('products');
@@ -40,10 +45,17 @@ Route::get('/services', function () {
     return view('services');
 })->name('services');
 
+// User information route
 Route::get('/my_information', function () {
     return view('info_client');
 })->name('my_information');
 
+// Chat interface route
+Route::get('/chat', function () {
+    return view('chat');
+})->name('chat');
+
+// Compte routes
 Route::get('/compte/{num_cmt}', [CompteController::class, 'show_info_compte'])->name('compte.info_compte');
 Route::get('/compte', [ClientController::class, 'show_info'])->name('compte.info_client');
 Route::get('/compte/activate/{num_cmt}', [CompteController::class, 'activate'])->name('compte.activate');
@@ -51,13 +63,25 @@ Route::match(['get', 'post'], '/compte/activation/{num_cmt}/{activation_code}', 
 Route::post('/compte/process-activation/{num_cmt}/{activation_code}', [CompteController::class, 'processActivation'])->name('compte.process_activation');
 Route::get('/compte/{id}/products', [CompteController::class, 'showProducts'])->name('compte.show_products');
 
-Route::post('/inscrire' , [InscriptionController::class , 'inscrire']);
-Route::post('/logout', [SessionController::class , 'logout']);
-Route::post('/login', [SessionController::class , 'login']);
-Route::post('/nv_client',[ClientController::class ,'nv_client']);
-Route::post('/open_account',[CompteController::class,'new_account']);
+// User actions routes
+Route::post('/inscrire', [InscriptionController::class, 'inscrire']);
+Route::post('/logout', [SessionController::class, 'logout']);
+Route::post('/login', [SessionController::class, 'login']);
+Route::post('/nv_client', [ClientController::class, 'nv_client']);
+Route::post('/open_account', [CompteController::class, 'new_account']);
 
-//for chatbot
-Route::post('send_message', [ChatbotController::class, 'sendMessage'])->name('send_message');
 
-Route::get('/chatbot',[ChatbotController::class ,'index']);
+
+Route::post('/webhooks/rest/webhook', 'App\Http\Controllers\ChatbotController@handleWebhook');
+
+
+//Route::get('/my_information', [ClientController::class, 'showMyInformation'])->name('my_information');
+Route::get('/change-password', function(){
+    return view('change_password');
+})->name('change_password');
+
+Route::post('/update-password', [ClientController::class, 'updatePassword'])->name('update_password');
+Route::get('/change-email', [ClientController::class, 'showChangeEmailForm'])->name('change_email');
+Route::post('/update-email', [ClientController::class, 'updateEmail'])->name('update_email');
+Route::get('/change-phone-number', [ClientController::class, 'showChangePhoneNumberForm'])->name('change_phone_number');
+Route::post('/update-phone-number', [ClientController::class, 'updatePhoneNumber'])->name('update_phone_number');

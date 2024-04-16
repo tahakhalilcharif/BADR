@@ -6,8 +6,10 @@
     
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    
+    <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
+
 </head>
 <body>
     @auth
@@ -43,27 +45,16 @@
     
     <div class="container">
         @yield('content')
-        <button id="chat-button" class="floating-button">
-            <img src="{{ asset('images/chat.png') }}" alt="Chat" width="60px" height="60px">
-        </button>
-        
-        <div id="chat-window" class="chat-window">
-            <div class="chat-header">
-                <h3>Chat</h3>
-                <p>Powered by GPT-2</p>
-                <button id="chat-close-button" class="chat-close-button">
-                    <img src="{{ asset('images/close.png') }}" alt="Close" width="20px" height="20px">
-                </button>
-            </div>
-            <div class="chat-messages">
-                <!-- Chat messages will be added here -->
-            </div>
-            <div class="chat-input">
-                <input type="text" id="chat-input-field" placeholder="Type your message here...">
-                <button id="chat-send-button" class="chat-send-button">Send</button>
-            </div>
+
+        <button id="open-chat-button">Open Chat</button>
+        <div id="chat-window">
+            <h3>Rasa Chatbot</h3>
+            <div id="chat-container"></div>
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
         </div>
     </div>
+
 
     <footer>
         <div class="footer-content">
@@ -96,78 +87,78 @@
             <p>&copy; 2023 Copyrights BADR BANK by Digital Ways</p>
         </div>
     </footer>
+
     <script>
-        document.getElementById('chat-button').addEventListener('click', function() {
-            document.getElementById('chat-window').style.display = 'block';
-        });
-    
-        document.getElementById('chat-close-button').addEventListener('click', function() {
-            document.getElementById('chat-window').style.display = 'none';
-        });
-    </script>
-    <script>
-        const chatWindow = document.querySelector('#chat-window');
-        const chatMessages = document.querySelector('.chat-messages');
-        const chatInputField = document.querySelector('#chat-input-field');
-        const chatSendButton = document.querySelector('.chat-send-button');
-    
-        chatSendButton.addEventListener('click', async function() {
-            const message = chatInputField.value.trim();
-    
-            if (message) {
-                addChatMessage('user', message);
-                const token = document.querySelector('#chat-token').value;
-                const formData = new FormData();
-                formData.append('message', message);
-                
-                const response = await fetch({{route('send_message')}}, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ message })
-                });
-    
-                if (response.ok) {
-                    // Get the chatbot's response from the backend
-                    const responseData = await response.json();
-                    const responseText = responseData.response;
-    
-                    addChatMessage('bot', responseText);
-                } else {
-                    addChatMessage('bot', 'An error occurred. Please try again later.');
-                }
-    
-                chatInputField.value = '';
+        var openChatButton = document.getElementById("open-chat-button");
+        var chatWindow = document.getElementById("chat-window");
+        var chatContainer = document.getElementById("chat-container");
+        var userInput = document.getElementById("user-input");
+
+        openChatButton.addEventListener("click", function() {
+            if (chatWindow.style.display === "none" || chatWindow.style.display === "") {
+                chatWindow.style.display = "block";
+            } else {
+                chatWindow.style.display = "none";
             }
         });
-    
-        function addChatMessage(sender, message) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('chat-message');
-            messageDiv.classList.add(sender);
-    
-            const messageSpan = document.createElement('span');
-            messageSpan.textContent = message;
-    
-            messageDiv.appendChild(messageSpan);
-            chatMessages.appendChild(messageDiv);
-    
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        function sendMessage() {
+            var message = userInput.value;
+            userInput.value = "";
+
+            var messageElement = document.createElement("div");
+            messageElement.classList.add("message");
+            messageElement.classList.add("user-message");
+            messageElement.textContent = message;
+
+            chatContainer.appendChild(messageElement);
+
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.length > 0 && response[0].text) {
+                            var messageElement = document.createElement("div");
+                            messageElement.classList.add("message");
+                            messageElement.classList.add("bot-message");
+                            messageElement.textContent = response[0].text;
+
+                            chatContainer.appendChild(messageElement);
+
+                            chatContainer.scrollTop = chatContainer.scrollHeight;
+                        } else {
+                            var messageElement = document.createElement("div");
+                            messageElement.classList.add("message");
+                            messageElement.classList.add("bot-message");
+                            messageElement.textContent = "Sorry, I didn't understand that.";
+
+                            chatContainer.appendChild(messageElement);
+
+                            chatContainer.scrollTop = chatContainer.scrollHeight;
+                        }
+                    } else {
+                        var messageElement = document.createElement("div");
+                        messageElement.classList.add("message");
+                        messageElement.classList.add("bot-message");
+                        messageElement.textContent = "Error: " + xhr.status;
+
+                        chatContainer.appendChild(messageElement);
+
+                        chatContainer.scrollTop = chatContainer.scrollHeight;
+                    }
+                }
+            };
+
+            xhr.open("POST", "http://localhost:5005/webhooks/rest/webhook", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(JSON.stringify({ message: message }));
         }
-    
-        // Show/hide the chat window
-        const chatButton = document.querySelector('#chat-button');
-        const chatCloseButton = document.querySelector('#chat-close-button');
-    
-        chatButton.addEventListener('click', function() {
-            chatWindow.style.display = 'block';
-        });
-    
-        chatCloseButton.addEventListener('click', function() {
-            chatWindow.style.display = 'none';
-        });
     </script>
+    
+    
     
 </body>
 </html>

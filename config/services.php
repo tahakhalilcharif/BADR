@@ -31,4 +31,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'rasa' => [
+        'url' => env('RASA_URL', 'http://localhost:5005/webhooks/rest/webhook'),
+    ],
+    
+
 ];

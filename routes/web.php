@@ -45,6 +45,14 @@ Route::get('/services', function () {
     return view('services');
 })->name('services');
 
+Route::get('/qui-sommes-nous' , function(){
+    return view('qui_somme_nous');
+})->name('qui-sommes-nous');
+
+Route::get('/particuliers' , function(){
+    return view('particuliers');
+})->name('particuliers');
+
 
 // Chat interface route
 Route::get('/chat', function () {
@@ -58,7 +66,7 @@ Route::get('/compte/activate/{num_cmt}', [CompteController::class, 'activate'])-
 Route::match(['get', 'post'], '/compte/activation/{num_cmt}/{activation_code}', [CompteController::class, 'activationPage'])->name('compte.activation_page');
 Route::post('/compte/process-activation/{num_cmt}/{activation_code}', [CompteController::class, 'processActivation'])->name('compte.process_activation');
 Route::get('/compte/{id}/products', [CompteController::class, 'showProducts'])->name('compte.show_products');
-
+Route::post('/compte/transfer_money', [CompteController::class, 'transferMoney'])->name('compte.transfer_money');
 // User actions routes
 Route::post('/inscrire', [InscriptionController::class, 'inscrire']);
 Route::post('/logout', [SessionController::class, 'logout']);

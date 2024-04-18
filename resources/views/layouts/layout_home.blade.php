@@ -33,11 +33,16 @@
         <header>
             <nav class="nav">
                 <ul>
-                    <li class="nav-list-item" > <a href="{{ route('home') }}"></a>Accueil</li>
-                    <li class="nav-list-item" > <a href="{{ route('qui-sommes-nous') }}"></a>Qui sommes nous ?</li>
-                    <li class="nav-list-item" > <a href="{{ route('particuliers') }}"></a>Particuliers</li>
-                    <li class="nav-list-item" > <a href="{{ route('services') }}"></a>Services</li>
-                    <li class="nav-list-item" > <a href="{{ route('banque-en-ligne') }}"></a>Banque en ligne</li>
+                    <li class="nav-list-item" > <a href="{{ route('home') }}">Accueil</a></li>
+                    <li class="nav-list-item" > <a href="{{ route('qui-sommes-nous') }}">Qui sommes nous ?</a></li>
+                    <li class="nav-list-item" > <a href="{{ route('particuliers') }}">Particuliers</a></li>
+                    <li class="nav-list-item" > <a href="{{ route('services') }}">Services</a></li>
+                    <li class="nav-list-item" >
+                        <form action="/login" method="POST">
+                            @csrf
+                            <button><a href="/login">Log in</a></button>
+                        </form>
+                    </li>
                 </ul>
             </nav>
         </header>

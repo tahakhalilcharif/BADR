@@ -106,14 +106,54 @@ class CompteController extends Controller
     }
     
     public function showProducts($id)
-{
-    $compte = Compte::with('produits')->find($id);
-    $client = Client::where('id_client',$compte->id_client)->first();
+    {
+        $compte = Compte::with('produits')->find($id);
+        $client = Client::where('id_client',$compte->id_client)->first();
 
-    if (!$compte) {
-        return redirect()->back()->with('error', 'Compte not found.');
+        if (!$compte) {
+            return redirect()->back()->with('error', 'Compte not found.');
+        }
+
+        return view('compte.show_products', compact('compte' ,'client'));
     }
 
-    return view('compte.show_products', compact('compte' ,'client'));
+    public function transferMoney(Request $request)
+{
+    $request->validate([
+        'recipient_account_number' => 'required|exists:comptes,num_cmt',
+        'amount' => 'required|numeric|min:1',
+    ]);
+
+    // Retrieve the source account
+    $sourceAccount = auth()->user()->client->comptes()->where('id_cmpt', $request->input('source_account_id'))->first();
+
+    // Check if the source account exists
+    if (!$sourceAccount) {
+        return redirect()->back()->with('error', 'Source account does not exist.');
+    }
+
+    // Retrieve the recipient account
+    $recipientAccount = Compte::where('num_cmt', $request->input('recipient_account_number'))->first();
+
+    // Check if the recipient account exists
+    if (!$recipientAccount) {
+        return redirect()->back()->with('error', 'Recipient account does not exist.');
+    }
+
+    // Check if the source account has sufficient balance
+    if ($sourceAccount->solde < $request->input('amount')) {
+        return redirect()->back()->with('error', 'Insufficient balance.');
+    }
+
+    // Update balances
+    $sourceAccount->solde -= $request->input('amount');
+    $recipientAccount->solde += $request->input('amount');
+
+    // Save changes
+    $sourceAccount->save();
+    $recipientAccount->save();
+
+    return redirect()->back()->with('success', 'Money transferred successfully.');
 }
+
 }

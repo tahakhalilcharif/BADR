@@ -9,6 +9,7 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id('id_client');
+            $table->foreignId('user_id');
             $table->string('nom', 100);
             $table->string('prenom', 100);
             $table->integer('revenu')->default(0);

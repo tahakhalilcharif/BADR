@@ -53,24 +53,11 @@ class Compte extends Model
         return $this->hasMany(Produit::class, 'id_compte');
     }
 
+
     public function classeLibelle()
-{
-    switch ($this->classe) {
-        case 300:
-            return 'COMPTE COURANT';
-        case 255:
-            return 'COMPTE DIVERS';
-        case 251:
-            return 'LIVRET EPARGNE BANQUE AVEC INTERETS';
-        case 202:
-            return 'COMPTES DEVISES COMMERÇANT';
-        case 201:
-            return 'COMPTE DEVISES PERSONNE PHYSIQUE';
-        case 200:
-            return 'COMPTE CHEQUE';
-        default:
-            return 'Unknown';
+    {
+        $label = ClasseCompte::where('classe' ,$this->classe)->first() ;
+        return $label->label;
     }
-}
 
 }

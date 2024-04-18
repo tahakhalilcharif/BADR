@@ -59,6 +59,7 @@ class ClientController extends Controller
         {
             $client = Client::where('user_id',$userID)->first();
             $comptes = Compte::where('id_client',$client['id_client'])->get();
+            
             return view('compte.info_client',['client'=>$client,'comptes'=>$comptes]);
         }
 
@@ -67,73 +68,72 @@ class ClientController extends Controller
 
     public function showChangePasswordForm()
     {
-        return view('change_password');
+        return view('compte.change_password');
     }
 
     public function updatePassword(Request $request)
     {
-        // Validate input
         $request->validate([
             'current_password' => 'required',
             'new_password' => 'required|min:8|confirmed',
         ]);
 
-        // Retrieve authenticated user
         $user = auth()->user();
-
-        // Check if current password matches
         if (!Hash::check($request->current_password, $user->password)) {
             return back()->with('error', 'Current password is incorrect.');
         }
 
-        // Update password
         $user->password = bcrypt($request->new_password);
         $user->save();
 
-        return redirect()->route('my_information')->with('success', 'Password updated successfully.');
+        return redirect()->route('compte.info_client')->with('success', 'Password updated successfully.');
     }
 
     public function showChangeEmailForm()
     {
-        return view('change_email');
+        return view('compte.change_email');
     }
 
     public function updateEmail(Request $request)
     {
-        // Validate input
         $request->validate([
+            'current_password' => 'required',
             'new_email' => 'required|email|unique:users,email',
         ]);
 
-        // Retrieve authenticated user
-        $user = auth()->user();
+        if (!Hash::check($request->current_password, auth()->user()->password)) {
+            return redirect()->back()->with('error', 'Current password is incorrect.');
+        }
 
-        // Update email
+        $user = auth()->user();
         $user->email = $request->new_email;
         $user->save();
 
-        return redirect()->route('my_information')->with('success', 'Email updated successfully.');
+        return redirect()->route('compte.info_client')->with('success', 'Email updated successfully.');
     }
+
 
     public function showChangePhoneNumberForm()
     {
-        return view('change_phone_number');
+        return view('compte.change_phone_number');
     }
 
     public function updatePhoneNumber(Request $request)
     {
-        // Validate input
         $request->validate([
+            'current_password' => 'required',
             'new_phone_number' => 'required|numeric|digits:10|unique:clients,num_tlf',
         ]);
 
-        // Retrieve authenticated user's client
-        $client = auth()->user()->client;
+        if (!Hash::check($request->current_password, auth()->user()->password)) {
+            return redirect()->back()->with('error', 'Current password is incorrect.');
+        }
 
-        // Update phone number
+        $id = Auth::user()->id;
+        $client = Client::where('id_client',Auth::user()->id)->first();
         $client->num_tlf = $request->new_phone_number;
         $client->save();
 
-        return redirect()->route('my_information')->with('success', 'Phone number updated successfully.');
+        return redirect()->route('compte.info_client')->with('success', 'Phone number updated successfully.');
     }
 }

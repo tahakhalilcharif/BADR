@@ -45,10 +45,6 @@ Route::get('/services', function () {
     return view('services');
 })->name('services');
 
-// User information route
-Route::get('/my_information', function () {
-    return view('info_client');
-})->name('my_information');
 
 // Chat interface route
 Route::get('/chat', function () {
@@ -71,15 +67,11 @@ Route::post('/nv_client', [ClientController::class, 'nv_client']);
 Route::post('/open_account', [CompteController::class, 'new_account']);
 
 
-
+//Rasa Chatbot Route
 Route::post('/webhooks/rest/webhook', 'App\Http\Controllers\ChatbotController@handleWebhook');
 
-
-//Route::get('/my_information', [ClientController::class, 'showMyInformation'])->name('my_information');
-Route::get('/change-password', function(){
-    return view('change_password');
-})->name('change_password');
-
+//User Information Routes
+Route::get('/change-password', [ClientController::class, 'showChangePasswordForm'])->name('change_password');
 Route::post('/update-password', [ClientController::class, 'updatePassword'])->name('update_password');
 Route::get('/change-email', [ClientController::class, 'showChangeEmailForm'])->name('change_email');
 Route::post('/update-email', [ClientController::class, 'updateEmail'])->name('update_email');

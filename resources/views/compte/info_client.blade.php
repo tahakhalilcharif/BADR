@@ -14,7 +14,7 @@
     <div style="border: 2px solid rgb(14, 110, 38);">
         <h2>Account Actions:</h2>
         <ul>
-            <li><a href="{{ route('my_information') }}">My Information</a></li>
+            <li><a href="{{ route('compte.info_client') }}">My Information</a></li>
             <li><a href="{{ route('change_password') }}">Change Password</a></li>
             <li><a href="{{ route('change_email') }}">Change Email</a></li>
             <li><a href="{{ route('change_phone_number') }}">Change Phone Number</a></li>
@@ -26,7 +26,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>Account Number</th>
+                    <th>Account </th>
                     <th>Current Balance</th>
                     <th>Last Transaction</th>
                     <th>Status</th>
@@ -36,7 +36,7 @@
             <tbody>
                 @foreach ($comptes as $compte)
                     <tr>
-                        <td>{{ $compte->num_cmt }}</td>
+                        <td>{{ $compte->classeLibelle() }}</td>
                         <td>{{ $compte->solde }}</td>
                         <td>{{ $compte->derniere_trn }}</td>
                         <td>{{ $compte->statut }}</td>

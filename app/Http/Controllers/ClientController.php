@@ -9,10 +9,20 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SessionController;
+use App\Models\Wilaya;
 
 class ClientController extends Controller
 {
-    public function nv_client(Request $request){
+
+    public function showClientRegistrationForm()
+    {
+        $wilayas = Wilaya::all();
+        return view('creation_du_client', ['wilayas' => $wilayas]);
+    }
+
+
+    public function nv_client(Request $request)
+    {
 
         $validatedData = $request->validate([
             'nom' => 'required|string|max:100',
@@ -52,17 +62,27 @@ class ClientController extends Controller
         return redirect('/login');
     }
 
-    public function show_info(){
-        $userID = Auth::user()->id;
-
-        if($userID)
-        {
-            $client = Client::where('user_id',$userID)->first();
-            $comptes = Compte::where('id_client',$client['id_client'])->get();
-            
-            return view('compte.info_client',['client'=>$client,'comptes'=>$comptes]);
+    public function show_info()
+    {
+        $user = Auth::user();
+        $userID = Auth::id();
+    
+        if ($userID) {
+            $client = Client::where('user_id', $userID)->first();
+    
+            if ($client) {
+                $comptes = Compte::where('id_client', $client->id_client)->get();
+                $totalBalance = $comptes->sum('solde');
+    
+                return view('compte.info_client', [
+                    'client' => $client,
+                    'comptes' => $comptes,
+                    'user' => $user,
+                    'totalBalance' => $totalBalance
+                ]);
+            }
         }
-
+    
         return view('compte.info_client');
     }
 
@@ -75,19 +95,22 @@ class ClientController extends Controller
     {
         $request->validate([
             'current_password' => 'required',
-            'new_password' => 'required|min:8|confirmed',
+            'new_password' => 'required|string|min:8|different:current_password',
+            'confirm_password' => 'required|string|min:8|same:new_password',
         ]);
 
-        $user = auth()->user();
+        $user = Auth::user();
+
         if (!Hash::check($request->current_password, $user->password)) {
-            return back()->with('error', 'Current password is incorrect.');
+            return redirect()->back()->with('error', 'Current password is incorrect.');
         }
 
-        $user->password = bcrypt($request->new_password);
+        $user->password = Hash::make($request->new_password);
         $user->save();
 
         return redirect()->route('compte.info_client')->with('success', 'Password updated successfully.');
     }
+
 
     public function showChangeEmailForm()
     {
@@ -101,13 +124,23 @@ class ClientController extends Controller
             'new_email' => 'required|email|unique:users,email',
         ]);
 
-        if (!Hash::check($request->current_password, auth()->user()->password)) {
+        $user = Auth::user();
+
+        // Check if the current password is correct
+        if (!Hash::check($request->current_password, $user->password)) {
             return redirect()->back()->with('error', 'Current password is incorrect.');
         }
 
-        $user = auth()->user();
+        // Update the email in the users table
         $user->email = $request->new_email;
         $user->save();
+
+        // Update the email in the clients table
+        $client = $user->client;
+        if ($client) {
+            $client->email = $request->new_email;
+            $client->save();
+        }
 
         return redirect()->route('compte.info_client')->with('success', 'Email updated successfully.');
     }
@@ -125,14 +158,19 @@ class ClientController extends Controller
             'new_phone_number' => 'required|numeric|digits:10|unique:clients,num_tlf',
         ]);
 
-        if (!Hash::check($request->current_password, auth()->user()->password)) {
+        $user = Auth::user();
+
+        // Check if the current password is correct
+        if (!Hash::check($request->current_password, $user->password)) {
             return redirect()->back()->with('error', 'Current password is incorrect.');
         }
 
-        $id = Auth::user()->id;
-        $client = Client::where('id_client',Auth::user()->id)->first();
-        $client->num_tlf = $request->new_phone_number;
-        $client->save();
+        // Update the phone number in the clients table
+        $client = $user->client;
+        if ($client) {
+            $client->num_tlf = $request->new_phone_number;
+            $client->save();
+        }
 
         return redirect()->route('compte.info_client')->with('success', 'Phone number updated successfully.');
     }

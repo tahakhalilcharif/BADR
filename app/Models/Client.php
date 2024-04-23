@@ -28,6 +28,8 @@ class Client extends Model
         'user_id',
     ];
 
+    protected $primaryKey = 'id_client';
+
     protected $casts = [
         'date_N' => 'date',
     ];

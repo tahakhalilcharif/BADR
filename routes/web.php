@@ -23,18 +23,8 @@ Route::get('/login', function () {
     return view('login');
 });
 
-// Account creation routes
-Route::get('/creer_compte', function () {
-    return view('creation_du_compte');
-});
-
-Route::get('/creer_client', function () {
-    return view('creation_du_client');
-});
-
-Route::get('/ouvrir_compte', function () {
-    return view('creation_du_compte');
-});
+Route::get('/creer_client', [ClientController::class, 'showClientRegistrationForm']);
+Route::get('/ouvrir_compte', [CompteController::class, 'showForm'])->name('ouvrir_compte');
 
 // Products and services routes
 Route::get('/products', function () {
@@ -54,11 +44,6 @@ Route::get('/particuliers' , function(){
 })->name('particuliers');
 
 
-// Chat interface route
-Route::get('/chat', function () {
-    return view('chat');
-})->name('chat');
-
 // Compte routes
 Route::get('/compte/{num_cmt}', [CompteController::class, 'show_info_compte'])->name('compte.info_compte');
 Route::get('/compte', [ClientController::class, 'show_info'])->name('compte.info_client');
@@ -67,6 +52,8 @@ Route::match(['get', 'post'], '/compte/activation/{num_cmt}/{activation_code}', 
 Route::post('/compte/process-activation/{num_cmt}/{activation_code}', [CompteController::class, 'processActivation'])->name('compte.process_activation');
 Route::get('/compte/{id}/products', [CompteController::class, 'showProducts'])->name('compte.show_products');
 Route::post('/compte/transfer_money', [CompteController::class, 'transferMoney'])->name('compte.transfer_money');
+Route::get('/new_account_form' , [CompteController::class ,'showForm'])->name('new_account_form');
+
 // User actions routes
 Route::post('/inscrire', [InscriptionController::class, 'inscrire']);
 Route::post('/logout', [SessionController::class, 'logout']);
@@ -78,7 +65,7 @@ Route::post('/open_account', [CompteController::class, 'new_account']);
 //Rasa Chatbot Route
 Route::post('/webhooks/rest/webhook', 'App\Http\Controllers\ChatbotController@handleWebhook');
 
-//User Information Routes
+//Upate User Information Routes
 Route::get('/change-password', [ClientController::class, 'showChangePasswordForm'])->name('change_password');
 Route::post('/update-password', [ClientController::class, 'updatePassword'])->name('update_password');
 Route::get('/change-email', [ClientController::class, 'showChangeEmailForm'])->name('change_email');

@@ -23,19 +23,20 @@
     <form action="/open_account" method="POST">
         @csrf
         <div>
-            <label for="classe">Classe:</label>
+            <label for="classe">Select Class:</label>
             <select name="classe" id="classe">
-                <option value="201">201</option>
-                <option value="202">202</option>
-                <option value="300">300</option>
-                <option value="251">251</option>
-                <option value="200">200</option>
-                <option value="255">255</option>
+                @foreach ($classes as $classe)
+                    <option value="{{ $classe->classe }}">{{ $classe->label }}</option>
+                @endforeach
             </select>
         </div>
         <div>
             <label for="agence">Agence:</label>
-            <input type="number" id="agence" name="agence" required pattern="\d{5}" title="Please enter a 5-digit number">
+            <select name="agence" id="agence" required>
+                @foreach ($agences as $agence)
+                    <option value="{{ $agence->code_agence }}">{{ $agence->nom_agence }}</option>
+                @endforeach
+            </select>
         </div>
         <button type="submit">Open Account</button>
     </form>

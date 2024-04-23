@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Activation</title>
-</head>
-<body>
+@extends('layouts.layout_home')
+
+@section('content')
     <h1>Account Activation</h1>
     
     <p>Please enter the activation code you received to activate your account.</p>
@@ -20,5 +15,4 @@
         <input type="text" id="activation_code" name="activation_code" required>
         <button type="submit">Activate Account</button>
     </form>
-</body>
-</html>
+@endsection

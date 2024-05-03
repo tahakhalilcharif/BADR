@@ -15,33 +15,22 @@ class Client extends Model
         'prenom',
         'revenu',
         'sexe',
-        'date_N',
-        'lieu_N',
+        'date_n',
+        'lieu_n',
         'email',
         'num_tlf',
         'adresse',
         'wilaya',
         'commune',
         'daira',
-        'categorie',
-        'statut',
+        'category',
+        'type',
+        'forme_juridique_id',
+        'denomination',
+        'activite',
+        'status',
         'user_id',
     ];
-
-    protected $primaryKey = 'id_client';
-
-    protected $casts = [
-        'date_N' => 'date',
-    ];
-
-    public $timestamps = false;
-
-    /**
-     * Define a one-to-one relationship with Compte model.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-    */
-
 
     public function comptes()
     {
@@ -52,12 +41,14 @@ class Client extends Model
     {
         return $this->compte && $this->compte->statut === 'actif';
     }
-
-    public function showComptes(Request $request)
+    
+    public function formeJuridique()
     {
-        $client = $request->user()->client;
-        $comptes = $client->comptes;
+        return $this->belongsTo(FormeJuridique::class);
+    }
 
-        return view('comptes.show', compact('comptes'));
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -14,7 +14,7 @@ class CreateComptesTable extends Migration
             $table->double('solde');
             $table->date('date_ouv')->default(now());
             $table->double('derniere_trn');
-            $table->enum('statut', ['actif', 'bloque'])->default('bloque');
+            $table->enum('statut', ['actif', 'bloque'])->default('actif');
             $table->tinyInteger('interdit_au_credit')->default(0);
             $table->tinyInteger('interdit_au_debit')->default(0);
             $table->string('banque', 3)->default('003');

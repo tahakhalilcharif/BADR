@@ -41,16 +41,9 @@
                         <td>{{ $compte->derniere_trn }}</td>
                         <td>{{ $compte->statut }}</td>
                         <td>
-                            @if ($compte->statut === 'bloque')
-                                <form action="{{ route('compte.activate', $compte->num_cmt) }}" method="GET">
-                                    @csrf
-                                    <button type="submit">Activate Account</button>
-                                </form>
-                            @else
-                                <form action="{{ route('compte.info_compte', $compte->num_cmt) }}" method="GET">
-                                    <button type="submit">Access Account</button>
-                                </form>
-                            @endif
+                            <form action="{{ route('compte.info_compte', $compte->num_cmt) }}" method="GET">
+                                <button type="submit">Access Account</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

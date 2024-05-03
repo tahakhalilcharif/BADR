@@ -1,4 +1,5 @@
 @extends('layouts.layout_home')
+
 @section('content')
     @auth
     <form action="/logout" method="POST">

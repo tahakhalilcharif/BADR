@@ -9,10 +9,10 @@
         <div>{{ session('error') }}</div>
     @endif
 
-    <form action="{{ route('compte.process_activation', ['num_cmt' => $compte->num_cmt, 'activation_code' => $activation_code]) }}" method="POST">
+    <form action="{{ route('activate.client') }}" method="POST">
         @csrf
-        <label for="activation_code">Activation Code:</label>
-        <input type="text" id="activation_code" name="activation_code" required>
+        <label for="activation_code">Activation Code:</label><br>
+        <input type="text" id="activation_code" name="activation_code" required><br><br>
         <button type="submit">Activate Account</button>
     </form>
 @endsection

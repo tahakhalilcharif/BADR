@@ -102,10 +102,21 @@
         openChatButton.addEventListener("click", function() {
             if (chatWindow.style.display === "none" || chatWindow.style.display === "") {
                 chatWindow.style.display = "block";
+                displayBotMessage("Hello, I am the BADR Bank assistant. How can I help you today?");
             } else {
                 chatWindow.style.display = "none";
             }
         });
+
+        function displayBotMessage(message) {
+            var messageElement = document.createElement("div");
+            messageElement.classList.add("message");
+            messageElement.classList.add("bot-message");
+            messageElement.textContent = message;
+
+            chatContainer.appendChild(messageElement);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }   
 
         function sendMessage() {
             var message = userInput.value;
@@ -163,7 +174,7 @@
         }
     </script>
     
-    
+    @yield('scripts')
     
 </body>
 </html>

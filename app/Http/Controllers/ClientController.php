@@ -5,14 +5,78 @@ namespace App\Http\Controllers;
 use Hash;
 use App\Models\Client;
 use App\Models\Compte;
+use App\Models\Wilaya;
 use Illuminate\Http\Request;
+use App\Models\FormeJuridique;
 use Illuminate\Validation\Rule;
+use App\Models\ClientActivationCode;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SessionController;
-use App\Models\Wilaya;
 
 class ClientController extends Controller
 {
+
+    public function showClientCreationForm()
+    {
+        $wilayas = Wilaya::all();
+        $formesJuridiques = FormeJuridique::all();
+        return view('creation_du_client', ['wilayas'=>$wilayas , 'formesJuridiques'=>$formesJuridiques]);
+    }
+
+    public function createClient(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nom' => 'required|string',
+            'prenom' => 'required|string',
+            'revenu' => 'required|numeric',
+            'sexe' => 'required|in:homme,femme',
+            'date_n' => 'required|date',
+            'lieu_n' => 'required|string',
+            'email' => 'required|email|unique:clients,email',
+            'num_tlf' => 'required|string',
+            'adresse' => 'required|string',
+            'select_wilaya' => 'required|string',
+            'commune' => 'required|string',
+            'daira' => 'required|string',
+            'category' => 'required|in:Personne Physique,Personne Morale',
+            'type' => 'nullable|in:Professionnel,Commercant,Particulier',
+            'forme_juridique_id' => 'nullable|string',
+            'denomination' => 'nullable|string',
+            'activite' => 'nullable|string',
+            'status' => 'nullable|in:vivant,mort',
+        ]);
+
+
+
+        $client = new Client();
+        $client->nom = $validatedData['nom'];
+        $client->prenom = $validatedData['prenom'];
+        $client->revenu = $validatedData['revenu'];
+        $client->sexe = $validatedData['sexe'];
+        $client->date_n = $validatedData['date_n'];
+        $client->lieu_n = $validatedData['lieu_n'];
+        $client->email = $validatedData['email'];
+        $client->num_tlf = $validatedData['num_tlf'];
+        $client->adresse = $validatedData['adresse'];
+        $client->wilaya = $validatedData['select_wilaya'];
+        $client->commune = $validatedData['commune'];
+        $client->daira = $validatedData['daira'];
+        $client->category = $validatedData['category'];
+        $client->type = $validatedData['type'];
+        $client->forme_juridique_id = $validatedData['forme_juridique_id'];
+        $client->denomination = $validatedData['denomination'];
+        $client->activite = $validatedData['activite'];
+        $client->status = "vivant";
+        $client->user_id = auth()->user()->id;
+        $client->save();
+
+        $activationCode = ClientActivationCode::create([
+            'id_client' => $client->id,
+            'activation_code' => uniqid(),
+        ]);
+
+        return redirect()->route('activation.page', ['code' => $activationCode->activation_code]);
+    }
 
     public function showClientRegistrationForm()
     {

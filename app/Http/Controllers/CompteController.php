@@ -48,7 +48,6 @@ class CompteController extends Controller
         $compte->id_client = $client->id_client;
         $compte->solde = 0;
         $compte->derniere_trn = 0;
-        $compte->statut = 'bloque';
         $compte->date_ouv = now();
         $compte->interdit_au_credit = 0;
         $compte->interdit_au_debit = 0;
@@ -144,17 +143,20 @@ class CompteController extends Controller
     public function transferMoney(Request $request)
     {
         $request->validate([
-            'recipient_account_number' => 'required|min:16',
+            'recipient_account_number' => 'required|exists:comptes,num_cmt',
             'amount' => 'required|numeric|min:1',
         ]);
 
-        $sourceAccount = auth()->user()->client->comptes()->where('id_cmpt', $request->input('source_account_id'))->first();
+        //$sourceAccount = auth()->user()->client->comptes()->where('id_cmpt', $request->input('source_account_id'))->first();
+        $user = auth()->user();
+        $client = Client::where('id_client',$user->id)->first();
+        $sourceAccount = Compte::where('id_cmpt' , $request['source_account_id'])->first();
 
         if (!$sourceAccount) {
             return redirect()->back()->with('error', 'Source account does not exist.');
         }
 
-        $recipientAccount = Compte::where('num_cmt', $request->input('recipient_account_number'))->first();
+        $recipientAccount = Compte::where('num_cmt', $request['recipient_account_number'])->first();
 
         if (!$recipientAccount) {
             return redirect()->back()->with('error', 'Recipient account does not exist.');
@@ -172,6 +174,5 @@ class CompteController extends Controller
 
         return redirect()->back()->with('success', 'Money transferred successfully.');
     }
-
 
 }

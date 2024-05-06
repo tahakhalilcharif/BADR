@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.test{
+        display: block;
+        unicode-bidi: isolate;
+}
+
+#myWrapperContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    margin: 10px 0;
+}
+
+
+.wrapper img {
+    width: 30%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: none;
+    order: 2;
+}
+
+
+.wrapper .text-box {
+    width: 55%;
+    order: 1;
+    padding-right: 10px;
+    margin-left: 20px;
+
+}
+
+
+
+.text-box h2 {
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+
+.sophisticated-list p {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+
+.sophisticated-list p::before {
+    content: '• ';
+    color: #ff6b6b;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+
+
+/* Style pour le composant collapsible */
+details {
+    border: 1px solid #ccc; /* Bordure légère */
+    border-radius: 8px; /* Coins arrondis */
+    margin: 10px 0; /* Espace autour */
+    padding: 10px; /* Espacement interne */
+    background-color: #f9f9f9; /* Couleur de fond claire */
+    transition: all 0.3s ease; /* Transition pour les animations */
+    width: 100%; /* Largeur de 100% pour correspondre à celle du wrapper */
+    box-sizing: border-box; /* Inclure les bordures et le padding dans la largeur */
+}
+
+/* Style pour le summary (titre) de l'élément collapsible */
+summary {
+    cursor: pointer; /* Pointeur de la souris au-dessus du titre */
+    font-weight: bold; /* Met le texte en gras */
+    color: #0d0d0e; /* Couleur de texte bleue */
+    padding: 5px; /* Espacement interne */
+    border-radius: 5px; /* Coins arrondis */
+    border: none; /* Pas de bordure */
+    background-color: #e9ecef; /* Couleur de fond grise */
+    box-sizing: border-box; /* Inclure les bordures et le padding dans la largeur */
+}
+
+/* Effet de survol sur le summary */
+summary:hover {
+    color: #4ce937; /* Couleur de texte plus sombre lors du survol */
+    background-color: #d4d8dd; /* Couleur de fond plus foncée lors du survol */
+}
+
+/* Style pour le contenu interne du collapsible */
+.collapsible-content {
+    padding: 5px; /* Espacement interne */
+    margin-top: 0px; /* Marge supérieure */
+    border-top: 1px solid #ccc; /* Bordure supérieure pour séparer du titre */
+    box-sizing: border-box; /* Inclure les bordures et le padding dans la largeur */
+}

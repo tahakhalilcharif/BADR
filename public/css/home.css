@@ -1,0 +1,28 @@
+
+.wrapper{
+
+    width: 70%;
+
+   }
+
+   .wrapper img {
+    width: 45%; /* Réduit la largeur de l'image pour la rendre plus petite */
+    height: 400px; /* Ajuste la hauteur de l'image */
+    float: right; /* Maintient l'image à droite */
+    border-radius: 15px;
+    background-color: whitesmoke;
+    box-shadow: 2px 3px 3px #cbced1, -5px -5px 3px #cbced1;
+    margin-left: 20px;
+}
+
+.text-box {
+    margin-right: 20px;
+}
+   .text-box h2{
+       font-size: 20 PX;
+       text-shadow: 3PX 4PX 4PX rgb(65, 62, 62);
+   }
+   .text-box P{
+       font-size: 16PX;
+
+   }

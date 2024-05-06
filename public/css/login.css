@@ -5,23 +5,25 @@
     box-sizing: border-box;
     font-family: 'poppins', sans-serif;
 }
-html {
-    scroll-behavior: smooth;
-}
+
 body
 {
 background-image:url(https://badrbanque.dz/wp-content/uploads/2023/01/finance-islamique-badr.jpg);
 background-size: cover;
 
+    overflow: hidden;
+    height: 80%;
+
+
 }
 
-.container 
+.container
 {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 90vh;
-    margin: 130PX 20px;
+    min-height: 70vh;
+    margin: 130PX 10px;
 
 }
 .logo {
@@ -38,11 +40,11 @@ background-size: cover;
         0px 0px 0px 5px #ecf0f3,
         8px 8px 15px #a7aaa7,
         -8px -8px 15px #fff;
-} 
+}
 
-     
+
 .box {
-    
+
     display: flex;
     flex-direction: column;
     max-width: 500px;
@@ -52,11 +54,11 @@ background-size: cover;
     border-radius: 10px;
     background-color: whitesmoke;
     border-radius: 15px;
-    box-shadow: 8px 3px 3px #cbced1 , -8px -8px 3px #cbced1;    box-shadow: 8px 3px 3px #cbced1, -8px -8px 3px #cbced1; 
- 
-    
+    box-shadow: 8px 3px 3px #cbced1 , -8px -8px 3px #cbced1;    box-shadow: 8px 3px 3px #cbced1, -8px -8px 3px #cbced1;
+
+
 }
-.form-box header 
+.form-box header
 {
     font-size: 25px;
     font-weight: 600;
@@ -64,17 +66,18 @@ background-size: cover;
     border-bottom: 0px solid #4a642c ;
     margin-bottom: 10px;
     text-align: center;
+    text-shadow: 8PX 4PX 4PX rgb(65, 62, 62);
 }
 .form-box .field {
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     flex-direction: column;
 }
 .form-box form .input input {
-    height: 32px;
+    height: 35px;
     width: 100%;
-    font-size: 10px;
-    padding: 0 2px;
+    font-size: 15px;
+    padding: 0PX 8PX;
     border-radius: 3px;
     border: 1px solid #ccc;
     outline: none;

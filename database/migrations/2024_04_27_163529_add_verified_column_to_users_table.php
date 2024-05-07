@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('employe',function(Blueprint $table){
-            $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('nom', 100);
-            $table->string('prenom', 100);
-            $table->enum('role', ['chargé_de_clientèle', 'administrateur']);
-            $table->timestamps();
-
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('verified')->default(false);
         });
     }
 
@@ -31,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('verified');
+        });
     }
 };

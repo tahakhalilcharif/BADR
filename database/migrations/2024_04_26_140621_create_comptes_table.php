@@ -14,7 +14,7 @@ class CreateComptesTable extends Migration
             $table->double('solde');
             $table->date('date_ouv')->default(now());
             $table->double('derniere_trn');
-            $table->enum('statut', ['actif', 'bloque'])->default('bloque');
+            $table->enum('statut', ['actif', 'bloque'])->default('actif');
             $table->tinyInteger('interdit_au_credit')->default(0);
             $table->tinyInteger('interdit_au_debit')->default(0);
             $table->string('banque', 3)->default('003');
@@ -22,9 +22,11 @@ class CreateComptesTable extends Migration
             $table->string('num_serie', 7);
             $table->string('cle', 2)->storedAs("97 - ((CAST(SUBSTRING(CONCAT(banque, agence, num_serie, classe), 4, 15) AS UNSIGNED) * 100) % 97)");
             $table->string('num_cmt', 20)->storedAs("CONCAT(banque, agence, num_serie, classe, cle)");
+            $table->foreignId('classe');
+            $table->foreign('classe')->references('classe')->on('classe_comptes');
             $table->index('id_client');
             $table->foreign('id_client')->references('id_client')->on('clients');
-            $table->enum('classe' , ['201', '202', '300', '251', '200', '255']);
+            //$table->enum('classe' , ['201', '202', '300', '251', '200', '255']);
         });
 
     

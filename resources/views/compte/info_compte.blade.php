@@ -26,9 +26,9 @@
             @csrf
             <input type="hidden" name="source_account_id" value="{{ $compte->id_cmpt }}">
             <label for="recipient_account_number">Recipient Account Number:</label>
-            <input type="text" name="recipient_account_number" required>
+            <input type="text" name="recipient_account_number" id="recipient_account_number" required>
             <label for="amount">Amount:</label>
-            <input type="number" name="amount" min="500" required>
+            <input type="number" name="amount" id="name" min="500" required>
             <button type="submit">Transfer</button>
         </form>
         @endif

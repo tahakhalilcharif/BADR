@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
 <link rel="stylesheet" href="{{ asset('css/qui-sommes-nous.css') }}">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"/>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"/>
 @endsection
 @section('title', 'about us')
 
@@ -33,6 +32,4 @@
 </div>
 
 @endsection
-@section('scripts')
 
-@endsection

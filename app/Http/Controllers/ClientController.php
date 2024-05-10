@@ -146,8 +146,6 @@ class ClientController extends Controller
                 ]);
             }
         }
-    
-        return view('compte.info_client');
     }
 
     public function showChangePasswordForm()

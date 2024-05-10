@@ -155,6 +155,8 @@
         </div>
     </footer>
 
+    <input type="hidden" id="auth-token" value="{{ session('token') }}">
+
     <script>
         var openChatButton = document.getElementById("open-chat-button");
         var chatWindow = document.getElementById("chat-window");
@@ -238,14 +240,18 @@
                 }
             };
 
+            var token = document.getElementById('auth-token').value;
+            
             xhr.open("POST", "http://localhost:5005/webhooks/rest/webhook", true);
             xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("Authorization", "Bearer " + token);
             xhr.send(JSON.stringify({
                 message: message
             }));
         }
     </script>
 
+    @yield('scripts')
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-..."
         crossorigin="anonymous"></script>

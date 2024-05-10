@@ -92,4 +92,7 @@ Route::middleware(['verified_user'])->group(function () {
 
 
 //api routes for the bot
+//Route::get('/balance', [ChatbotController::class, 'getBalance']);
+//
 Route::get('/balance', [ChatbotController::class, 'getBalance']);
+

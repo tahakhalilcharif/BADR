@@ -53,6 +53,10 @@ Route::get('/particuliers' , function(){
     return view('particuliers');
 })->name('particuliers');
 
+Route::get('/entreprises', function () {
+    return view('entreprises');
+})->name('entreprises');
+
 
 // Chat interface route
 Route::get('/chat', function () {

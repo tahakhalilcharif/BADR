@@ -76,11 +76,12 @@
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav ms-auto">
                             <ul>
-                                <li class="badr-nav-link nav-link"> <a href="{{ route('home') }}">home </a></li>
+                                <li class="badr-nav-link nav-link"> <a href="{{ route('home') }}">Home </a></li>
+                                <li class="badr-nav-link nav-link"> <a href="{{ route('qui-sommes-nous') }}">About us </a></li>
 
                                 <li class="badr-nav-link nav-link"> <a href="{{ route('particuliers') }}">Individuals</a>
                                 </li>
-                                <li class="badr-nav-link nav-link"> <a href="{{ route('services') }}">
+                                <li class="badr-nav-link nav-link"> <a href="{{ route('entreprises') }}">
                                     Businesses</a></li>
                                 <li class="badr-nav-link nav-link">
                                     <form action="/login" method="POST">
@@ -98,7 +99,7 @@
 
     @endauth
 
-    < <div class='acceuil'>
+    <div class='acceuil'>
         @auth
             @yield('content')
         @else

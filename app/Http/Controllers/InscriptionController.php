@@ -24,6 +24,6 @@ class InscriptionController extends Controller
         ]);
 
         auth()->login($user);
-        return redirect('/creer_client');
+        return redirect('/create-client');
     }
 }

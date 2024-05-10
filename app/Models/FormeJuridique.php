@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ClasseCompte extends Model
+class FormeJuridique extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class ClasseCompte extends Model
      *
      * @var string
      */
-    protected $table = 'classe_comptes';
+    protected $table = 'forme_juridiques';
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +22,7 @@ class ClasseCompte extends Model
      * @var array
      */
     protected $fillable = [
-        'classe',
-        'label',
+        'forme_juridique',
+        'libelle',
     ];
 }

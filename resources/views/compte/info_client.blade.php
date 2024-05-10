@@ -7,7 +7,7 @@
         <h2>My Information:</h2>
         <p>Name: {{ $client->nom }} {{ $client->prenom }}</p>
         <p>Phone Number: {{ $client->num_tlf }}</p>
-        <p>Email: {{ $client->email }}</p>
+        <p>Email: {{ $user->email }}</p>
         <p>Address: {{ $client->adresse }}</p>
     </div>
 
@@ -41,19 +41,32 @@
                         <td>{{ $compte->derniere_trn }}</td>
                         <td>{{ $compte->statut }}</td>
                         <td>
-                            @if ($compte->statut === 'bloque')
-                                <form action="{{ route('compte.activate', $compte->num_cmt) }}" method="GET">
-                                    @csrf
-                                    <button type="submit">Activate Account</button>
-                                </form>
-                            @else
-                                <form action="{{ route('compte.info_compte', $compte->num_cmt) }}" method="GET">
-                                    <button type="submit">Access Account</button>
-                                </form>
-                            @endif
+                            <form action="{{ route('compte.info_compte', $compte->num_cmt) }}" method="GET">
+                                <button type="submit">Access Account</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
+            </tbody>
+        </table>
+
+        <div>
+            <a href="{{ route('new_account_form') }}"><button>Create New Account</button></a>
+        </div>
+    </div>
+
+    <div style="border: 2px solid rgb(14, 110, 38);">
+        <h2>Total Balance of All Accounts:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Total Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ $totalBalance }}</td>
+                </tr>
             </tbody>
         </table>
     </div>

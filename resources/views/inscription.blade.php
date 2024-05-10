@@ -8,38 +8,60 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}">
     <title>BADR Banque - Banque de l'Agriculture et de Développement Rurale</title>
 </head>
+
 <body>
     <header>
         <nav class="nav">
             <ul>
-                <li class="nav-list-item" > <a href="#accueil"></a>Accueil</li>
-                <li class="nav-list-item" > <a href="#qui-sommes-nous"></a>Qui sommes nous ?</li>
-                <li class="nav-list-item" > <a href="#particuliers"></a>Particuliers</li>
-                <li class="nav-list-item" > <a href="#services"></a>Services</li>
-                <li class="nav-list-item" > <a href="#banque-en-ligne"></a>Banque en ligne</li>
+                <li class="nav-list-item"> <a href="#accueil"></a>Accueil</li>
+                <li class="nav-list-item"> <a href="#qui-sommes-nous"></a>Qui sommes nous ?</li>
+                <li class="nav-list-item"> <a href="#particuliers"></a>Particuliers</li>
+                <li class="nav-list-item"> <a href="#services"></a>Services</li>
+                <li class="nav-list-item"> <a href="#banque-en-ligne"></a>Banque en ligne</li>
             </ul>
         </nav>
     </header>
     @auth
     @else
-    <div style = "border: 2px solid rgb(14, 110, 38);">
+    <div style="border: 2px solid rgb(14, 110, 38);">
         <h2>Inscription</h2>
-        <form action="/inscrire" method="post">
+        <form action="/inscrire" method="post" id="registration-form">
             @csrf
             <label for="nom_dutilisateur">Nom d'utilisateur</label><br>
-            <input type="text" name="nom_dutilisateur" id="nom_dutilisateur" placeholder="Nom d'utilisateur" required><br>
-        
-            <label for="mot_de_passe">Mot de passe</label><br>
-            <input type="password" name="mot_de_passe" id="mot_de_passe" placeholder="Mot de passe" required><br>
-        
+            <input type="text" name="nom_dutilisateur" id="nom_dutilisateur" placeholder="Username" required><br>
+
             <label for="email">Email</label><br>
             <input type="email" name="email" id="email" placeholder="E-mail" required><br>
-    
-            
-            <button>Envoi</button>
+
+            <label for="mot_de_passe">Mot de passe</label><br>
+            <input type="password" name="mot_de_passe" id="mot_de_passe" placeholder="Password" required><br>
+
+            <label for="password_confirmation">Confirm Password:</label><br>
+            <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password" onkeyup="validatePassword()"><br>
+            <span id="password-message"></span>
+
+            <button id="submit-btn">Envoi</button>
         </form>
     </div>
     @endauth
+
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("mot_de_passe").value;
+            var confirm_password = document.getElementById("password_confirmation").value;
+            var message = document.getElementById("password-message");
+
+            if (password === confirm_password) {
+                message.innerHTML = "Les mots de passe correspondent";
+                message.style.color = "green";
+                document.getElementById("submit-btn").disabled = false;
+            } else {
+                message.innerHTML = "Les mots de passe ne correspondent pas";
+                message.style.color = "red";
+                document.getElementById("submit-btn").disabled = true;
+            }
+        }
+    </script>
 </body>
 
 </html>

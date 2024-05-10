@@ -22,7 +22,7 @@
         </div>
     </div>
     <details>
-        <summary>    ABOUT LUNCH ACCOUNT </summary>
+        <summary>    ABOUT DINARS ACCOUNT </summary>
         <div class="collapsible-content">
             <h5  >
                 An account that guarantees the good management of your activity and liquidity </h5>

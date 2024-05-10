@@ -49,9 +49,13 @@ Route::get('/qui-sommes-nous' , function(){
     return view('qui_somme_nous');
 })->name('qui-sommes-nous');
 
-Route::get('/particuliers' , function(){
-    return view('particuliers');
-})->name('particuliers');
+Route::get('/particuliers_compte' , function(){
+    return view('particuliers_compte');
+})->name('particuliers_compte');
+
+Route::get('/particuliers_carte' , function(){
+    return view('particuliers_carte');
+})->name('particuliers_carte');
 
 Route::get('/entreprises', function () {
     return view('entreprises');

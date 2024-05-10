@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
 <link rel="stylesheet" href="{{ asset('css/particuliers.css') }}">
 @endsection
-@section('title', 'Particuliers')
+@section('title', 'Particuliers_compte')
 
 
 @section('content-public')
@@ -21,7 +21,7 @@
         </div>
     </div>
     <details>
-        <summary>    ABOUT A DINARS BANK ACCOUNT </summary>
+        <summary>    ABOUT DINARS BANK ACCOUNT </summary>
         <div class="collapsible-content">
             <h5>  File to provide: </h5>
             <p>* Copy of valid identity document </p>
@@ -42,7 +42,7 @@
     </details>
 
     <details>
-        <summary>    ABOUT A CURRENCY BANK ACCOUNT </summary>
+        <summary>    ABOUT CURRENCY BANK ACCOUNT </summary>
         <div class="collapsible-content">
             <p>
                 The BADR currency account is an account that works with a single currency.
@@ -57,7 +57,7 @@
     </details>
 
     <details>
-        <summary>    ABOUT A CEDAC ACCOUNT</summary>
+        <summary>    ABOUT CEDAC ACCOUNT</summary>
 
         <div class="collapsible-content">
             <p>
@@ -70,4 +70,5 @@
 </div>
 
 @endsection
+
 

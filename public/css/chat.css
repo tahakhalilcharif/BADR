@@ -1,42 +1,89 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+*{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+/* Bouton pour ouvrir la fenêtre de discussion */
 #open-chat-button {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #4CAF50;
+    background-color: #94d441;
     color: white;
     border: none;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    font-size: 24px;
-    z-index: 100;
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 1000;
+
+    /* Alignez le texte au centre du bouton */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Ajustez le texte dans le bouton */
+    font-size: 1rem;
 }
 
-#chat-window {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 300px;
-    height: 400px;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    display: none;
-}
 
-#chat-container {
-    height: 80%;
-    overflow-y: auto;
+
+
+/* En-tête de la fenêtre de discussion */
+.chat-header {
     padding: 10px;
+    background-color: #8a9e72;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+/* Bouton de fermeture de la fenêtre */
+.close-chat-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Conteneur des messages de discussion */
+.chat-container {
+    padding: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Pied de la fenêtre de discussion */
+.chat-footer {
+    padding: 0px; /* Réduisez le padding pour minimiser l'espace en bas */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* Champ d'entrée de texte */
 #user-input {
-    width: 70%;
-    margin-right: 5%;
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
 }
 
-#send-button {
-    width: 20%;
+/* Bouton d'envoi de message */
+.chat-footer button {
+    margin-left: 5px;
+    background-color: #809b73;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
 }
+

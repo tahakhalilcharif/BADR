@@ -68,40 +68,39 @@
 
 
 
-/* Style pour le composant collapsible */
 details {
-    border: 1px solid #ccc; /* Bordure légère */
-    border-radius: 8px; /* Coins arrondis */
-    margin: 10px 0; /* Espace autour */
-    padding: 10px; /* Espacement interne */
-    background-color: #f9f9f9; /* Couleur de fond claire */
-    transition: all 0.3s ease; /* Transition pour les animations */
-    width: 100%; /* Largeur de 100% pour correspondre à celle du wrapper */
-    box-sizing: border-box; /* Inclure les bordures et le padding dans la largeur */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px 0;
+    padding: 10px; 
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Style pour le summary (titre) de l'élément collapsible */
+
 summary {
-    cursor: pointer; /* Pointeur de la souris au-dessus du titre */
-    font-weight: bold; /* Met le texte en gras */
-    color: #0d0d0e; /* Couleur de texte bleue */
-    padding: 5px; /* Espacement interne */
-    border-radius: 5px; /* Coins arrondis */
-    border: none; /* Pas de bordure */
-    background-color: #e9ecef; /* Couleur de fond grise */
-    box-sizing: border-box; /* Inclure les bordures et le padding dans la largeur */
+    cursor: pointer;
+    font-weight: bold;
+    color: #0d0d0e;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #e9ecef;
+    box-sizing: border-box;
 }
 
-/* Effet de survol sur le summary */
+
 summary:hover {
-    color: #4ce937; /* Couleur de texte plus sombre lors du survol */
-    background-color: #d4d8dd; /* Couleur de fond plus foncée lors du survol */
+    color: #4ce937;
+    background-color: #d4d8dd;
 }
 
-/* Style pour le contenu interne du collapsible */
+
 .collapsible-content {
-    padding: 5px; /* Espacement interne */
-    margin-top: 0px; /* Marge supérieure */
-    border-top: 1px solid #ccc; /* Bordure supérieure pour séparer du titre */
-    box-sizing: border-box; /* Inclure les bordures et le padding dans la largeur */
+    padding: 5px;
+    margin-top: 0px;
+    border-top: 1px solid #ccc;
+    box-sizing: border-box;
 }

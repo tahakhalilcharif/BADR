@@ -26,9 +26,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('layouts.layout_home', function ($view) {
-            $token = Auth::user()->createToken('AppService')->plainTextToken;
-
-            $view->with('token', $token);
+            if(auth()->check()){
+                $token = Auth::user()->createToken('AppService')->plainTextToken;
+                $view->with('token', $token);
+            }else{
+                $view->with('token', null);
+            }
+            
         });
     }
 }

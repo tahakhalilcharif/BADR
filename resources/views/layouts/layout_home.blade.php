@@ -43,7 +43,7 @@
                                 </li>
                                 <li class="badr-nav-link nav-link"> <a href="{{ route('services') }}">services</a></li>
                                 <li class="badr-nav-link nav-link">
-                                    <form action="/logout" method="POST">
+                                    <form action="/logout" method="GET">
                                         @csrf
                                         <a href="/logout">Logout</a>
                                     </form>

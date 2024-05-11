@@ -13,7 +13,7 @@ use App\Http\Controllers\ClientActivationController;
 // Home page
 Route::get('/', function () {
     if(auth()->user()){
-        
+
     }
     return view('home');
 })->name('home');
@@ -54,7 +54,7 @@ Route::get('/entreprises', function () {
 
 // User actions routes
 Route::post('/inscrire', [InscriptionController::class, 'inscrire']);
-Route::post('/logout', [SessionController::class, 'logout']);
+Route::get('/logout', [SessionController::class, 'logout']);
 Route::post('/login', [SessionController::class, 'login']);
 Route::post('/open_account', [CompteController::class, 'new_account']);
 

@@ -12,6 +12,9 @@ use App\Http\Controllers\ClientActivationController;
 
 // Home page
 Route::get('/', function () {
+    if(auth()->user()){
+        
+    }
     return view('home');
 })->name('home');
 

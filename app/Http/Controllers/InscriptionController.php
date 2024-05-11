@@ -23,6 +23,8 @@ class InscriptionController extends Controller
             'password' => Hash::make($validatedData['mot_de_passe']),
         ]);
 
+        $token = $user->createToken('registration')->plainTextToken;
+
         auth()->login($user);
         return redirect('/create-client');
     }

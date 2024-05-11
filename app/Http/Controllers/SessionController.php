@@ -18,6 +18,7 @@ class SessionController extends Controller
     
         if (Auth::attempt(['email' => $loginData['log_in_email'], 'password' => $loginData['login_mot_de_passe']])) {
             $user = Auth::user();
+            $token = $user->createToken('session_token')->plainTextToken;
             $client = Client::where('user_id', $user->id)->first();
     
             if ($client) { // If the user is a client
@@ -26,7 +27,6 @@ class SessionController extends Controller
                 if ($compte) { // If the client has an account
                     if ($compte->hasActiveAccount()) { // If the account is active
                         $request->session()->regenerate();
-                        $token = $request->session()->token();
                         if ($token) {
                             return redirect()->intended('/')->with('token', $token);
                         } 
@@ -40,7 +40,6 @@ class SessionController extends Controller
                 }
             } else {
                 $request->session()->regenerate();
-                $token = $request->session()->token();
                 if ($token) {
                     return redirect()->intended('/create-client')->with('token', $token);
                 } 
@@ -54,6 +53,7 @@ class SessionController extends Controller
     }
 
     public function logout(){
+        auth()->user()->tokens()->delete();
         auth()->logout();
         return redirect('/login');
     }

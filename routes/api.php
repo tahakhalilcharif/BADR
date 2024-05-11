@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatbotController;
 
 
@@ -10,4 +11,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //Route::middleware('auth:sanctum')->get('/balance', [ChatbotController::class, 'getBalance']);
-Route::get('/balance', [ChatbotController::class, 'getBalance']);
+Route::post('/register' , [AuthController::class,'register']);
+
+Route::group(['middleware' => ['auth:sanctum']],function(){
+    Route::get('/balance', [ChatbotController::class, 'getBalance']);
+});

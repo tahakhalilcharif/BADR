@@ -121,9 +121,6 @@
         </div>
     </div>
 
-
-
-
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -241,24 +238,27 @@
                 }
             };
 
-            var token = document.getElementById('auth-token').value;
+            var token = "{{ $token }}";
             
             xhr.open("POST", "http://localhost:5005/webhooks/rest/webhook", true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("Authorization", "Bearer " + token);
             xhr.send(JSON.stringify({
-                message: message
+                message: message,
+                metadata: {
+                    authorization: token
+                }
             }));
         }
     </script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz2FnmKTE8rHmK9l1Y6GoD5CW5vg5oF2FIaB9ZtKZX5WWVk5yTOeFfI6U3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz2FnmKTE8rHmK9l1Y6GoD5CW5vg5oF2FIaB9ZtKZX5WWVk5yTOeFfI6U3" crossorigin="anonymous"></script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-bs8y4MefMRD3XJ6BKUTYjjl0pfTdbef/I5OfK0I13kL/TCwIp4j/iCb51PxlIjF7" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-bs8y4MefMRD3XJ6BKUTYjjl0pfTdbef/I5OfK0I13kL/TCwIp4j/iCb51PxlIjF7" crossorigin="anonymous"></script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-..."

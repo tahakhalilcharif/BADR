@@ -17,7 +17,7 @@ class ChatbotController extends Controller
     }
 
     public function getBalance(Request $request){
-        /*if (!auth()->check()) {
+        if (!auth()->check()) {
             return response()->json(['error' => 'User not authenticated'], 401);
         }
     
@@ -33,8 +33,8 @@ class ChatbotController extends Controller
     
         if (!$compte) {
             return response()->json(['error' => 'Compte not found or not active'], 404);
-        }*/
-        $compte = Compte::where('id_cmpt',7)->first();
+        }
+        //$compte = Compte::where('id_cmpt',7)->first();
         $balance = $compte->solde;
     
         return response()->json(['balance' => $balance], 200);

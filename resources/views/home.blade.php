@@ -1,10 +1,12 @@
 @extends('layouts.layout_home')
 
 @section('head')
-<link href="{{ asset('css/home.css') }}" rel="stylesheet">
-<link href="{{ asset('css/layout.css') }}" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 @endsection
- @section('title','BADR Bank')
+@section('title', 'BADR Bank')
 
 @section('content')
     <div class="auth-container">
@@ -18,25 +20,97 @@
             <button type="submit" class="btn btn-primary">View Account</button>
         </form>
     </div>
-    @endsection
+@endsection
 
-    @section('content-public')
-    <div class="wrapper">
-        <img src="{{ asset('images/project-6-560x690.jpg') }}" alt="Project image" class="project-image">
-        <div class="text-box">
-            <h2>About BADR</h2>
-            <p>The Banque de l'Agriculture et du Développement Rural (BADR) is a national financial institution created on March 13, 1982. For over 40 years, BADR has been fully committed to promoting the agricultural sector and rural development in Algeria. We offer a wide range of financial products and services to our clients.</p>
 
-            <h2>Our Sectors</h2>
-            <p>We facilitate financing for various sectors of activity including agriculture, agro-industry, fishing, and aquaculture, and support their growth and development.</p>
 
-            <h2>Our Commitment</h2>
-            <p>We offer financial services and tailored solutions to actively support the development of our clientele.</p>
-        </div>
+
+
+
+@section('content-public')
+    <div id="myhomecontainer">
+
+        <section class="home">
+            <div class="background-carousel">
+                <div class="background-image" style="background-image: url('{{ asset('images/badrrr.jpg') }}');"></div>
+
+                <div class="background-image" style="background-image: url('{{ asset('images/home.jpg') }}');"></div>
+
+                <div class="background-image" style="background-image: url('{{ asset('images/badrrrr.jpg') }}');"></div>
+                <div class="background-image" style="background-image: url('{{ asset('images/home.jpg') }}');"></div>
+                <div class="background-image" style="background-image: url('{{ asset('images/ble.avif') }}');"></div>
+            </div>
+            <!-- Contenu de la section home -->
+
+            <div class="content-box">
+                <h1>your trusted partner !</h1>
+                <p>"
+                    Benefit from elite online service with us where customer satisfaction is our priority."</p>
+            </div>
+
+        </section>
+
+
+
+
+
+
+
+        <section class="services">
+            <h1 class="heading">Discover our exceptional services </h1>
+            <div class="box-container">
+                <div class="box">
+                    <img src="{{ asset('images/cartebanc.png') }}">
+                    <h3> MONETICS</h3>
+                    <P> card CIB, CIB gold and international card</P>
+                </div>
+
+                <div class="box">
+                    <img src="{{ asset('images/bancacc.png') }}">
+                    <h3>Bank account </h3>
+                    <p> opening a dinar or currency account</p>
+                </div>
+
+                <div class="box">
+                    <img src="{{ asset('images/commerce.png') }}">
+                    <h3>international commerce </h3>
+                    <p> take advantage of international purchases</p>
+                </div>
+
+                <div class="box">
+                    <img src="{{ asset('images/bank.png') }}">
+                    <h3>bank insurance</h3>
+                    <p> a wide range of insurance for the benefit of our customers</p>
+                </div>
+
+                <div class="box">
+                    <img src="{{ asset('images/credit.png') }}">
+                    <h3>credit </h3>
+                    <p> take advantage of our wide range of credit</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="description">
+
+            <div class="wrapper">
+                <img src="{{ asset('images/bad.jpg') }}" >
+                <div class="text-box">
+                    <h2>"Secure Your Financial Future with Our Bank: Tailored Investments for Growth and Peace of Mind"</h2>
+                    <p>
+                        Investing in our bank is more than just a financial transaction; it's a partnership aimed at securing your financial future. With our proven expertise, we offer tailored investment solutions that maximize returns while minimizing risks. Our commitment to technological innovation ensures optimal accessibility to your accounts, allowing you to monitor and manage your investments with ease. By choosing our bank, you're opting for stability, growth, and peace of mind for yourself and your loved ones. </p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
     </div>
 
 @endsection
 
-@section('scripts')
-<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-@endsection

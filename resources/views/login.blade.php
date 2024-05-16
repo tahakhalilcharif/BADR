@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
 
     <title>BADR BANQUE &#8211; Banque de l’Agriculture et du Développement Rural</title>
-    
+
   </head>
   <body>
     <div class="container">
@@ -16,7 +16,7 @@
         <div class="logo">
           <img src=" https://upload.wikimedia.org/wikipedia/fr/5/5c/Banque_de_l%E2%80%99agriculture_et_du_d%C3%A9veloppement_rural.svg">
           </div>
-        
+
           <form action="/login" method="POST">
             @csrf
             <div class="field input">
@@ -32,14 +32,14 @@
             <div class="field">
                 <input type="submit"  class="btn" name="submit" value="connect" required>
             </div>
-            
+
             <div class="links">
                 <p>Create a new account? <a href="/inscription"> register
 </a></p>
             </div>
 
         </form>
-      </div> 
+      </div>
     </div>
   </body>
 </html>

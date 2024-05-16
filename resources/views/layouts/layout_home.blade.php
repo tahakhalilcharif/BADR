@@ -41,7 +41,9 @@
 
                                 <li class="badr-nav-link nav-link"> <a href="{{ route('products') }}">Products</a>
                                 </li>
-                                <li class="badr-nav-link nav-link"> <a href="{{ route('services') }}">services</a></li>
+                                <li class="badr-nav-link nav-link"> <a href="{{ route('information_client') }}">information</a>
+                                </li>
+
                                 <li class="badr-nav-link nav-link">
                                     <form action="/logout" method="POST">
                                         @csrf
@@ -82,7 +84,15 @@
                                 </ul>
                             </li>
                             <!-- Autres éléments de menu -->
-                            <li class="badr-nav-link nav-link"><a href="{{ route('entreprises') }}">Businesses</a></li>
+                            <li class="badr-nav-link nav-link dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Businesses
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="{{ route('entreprises_compte') }}">Compte</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('entreprises_carte') }}">Carte</a></li>
+                                </ul>
+                            </li>
                             <li class="badr-nav-link nav-link">
                                 <form action="/login" method="POST">
                                     @csrf
@@ -189,7 +199,7 @@
 
             chatContainer.appendChild(messageElement);
             chatContainer.scrollTop = chatContainer.scrollHeight;
-        }   
+        }
 
         function sendMessage() {
             var message = userInput.value;
@@ -242,7 +252,7 @@
             };
 
             var token = document.getElementById('auth-token').value;
-            
+
             xhr.open("POST", "http://localhost:5005/webhooks/rest/webhook", true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("Authorization", "Bearer " + token);

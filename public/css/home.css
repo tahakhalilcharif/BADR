@@ -1,28 +1,170 @@
-
-.wrapper{
-
-    width: 70%;
-
-   }
-
-   .wrapper img {
-    width: 45%; /* Réduit la largeur de l'image pour la rendre plus petite */
-    height: 400px; /* Ajuste la hauteur de l'image */
-    float: right; /* Maintient l'image à droite */
-    border-radius: 15px;
-    background-color: whitesmoke;
-    box-shadow: 2px 3px 3px #cbced1, -5px -5px 3px #cbced1;
-    margin-left: 20px;
+/* section home */
+.home {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin-bottom: 50px;
 }
+
+.background-carousel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.background-image {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+
+}
+
+
+.content-box {
+    position: absolute;
+    bottom: 120px; /* Ajuste cette valeur pour positionner la boîte verticalement */
+    left: 30px; /* Ajuste cette valeur pour positionner la boîte horizontalement */
+    padding: 20px;
+    background-color: rgba(73, 73, 73, 0.5); /* Couleur de fond semi-transparente */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Ombre autour de la boîte */
+}
+
+.content-box h1 {
+    font-family: 'Montserrat', sans-serif; /* Garder la police précédente */
+    font-weight: 700;
+    font-size: 3em;
+    margin-bottom: 10px;
+    margin-left: 50px;
+    color: #fff;
+}
+
+.content-box p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #fff;
+    margin: 0; /* Pour enlever la marge par défaut du paragraphe */
+}
+
+/* SECTION DESCRIPTION */
+.description {
+    background-color: #ffffff;
+    padding: 50px 0;
+}
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.wrapper img {
+    width: 45%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-right: 30px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.wrapper img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
 
 .text-box {
-    margin-right: 20px;
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
 }
-   .text-box h2{
-       font-size: 20 PX;
-       text-shadow: 3PX 4PX 4PX rgb(65, 62, 62);
-   }
-   .text-box P{
-       font-size: 16PX;
 
-   }
+.text-box h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.text-box p {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    color: #666;
+    line-height: 1.6;
+}
+
+
+
+
+
+
+
+/* section service */
+.heading {
+    margin-bottom: 5px;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #333;
+    font-family: "Helvetica", sans-serif;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); /* Ombre portée légère */
+}
+
+.services {
+    text-align: center;
+}
+
+.box-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+
+.services {
+    text-align: center;
+}
+
+.box-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.box {
+    background-color: rgb(243, 250, 245);
+    padding: 10px; /* Réduire le padding pour rendre les boîtes plus petites */
+    margin: 2px; /* Réduire la marge pour rapprocher les boîtes */
+    text-align: center;
+    flex-basis: calc(15% - 10px); /* Réduire la largeur des boîtes */
+    border-radius: 10px; /* Arrondir les coins */
+    cursor: pointer; /* Ajouter un pointeur au survol */
+    transition: background-color 0.3s ease; /* Animation de transition pour le changement de couleur de fond */
+}
+
+.box:hover {
+    background-color: #f8f53c;
+}
+
+
+.box h3 {
+
+        font-size: 1rem;
+        margin-top: 0.5rem;
+        padding-bottom: 8px; /* Ajouter un padding-bottom uniforme */
+        font-weight: 600;
+}
+
+.box img {
+    width: 60px;
+    height: auto;
+}

@@ -121,7 +121,7 @@ class ClientController extends Controller
             'user_id' => auth()->id(),
             'email' => $userEmail,
         ]);
-        
+
         auth()->logout();
         return redirect('/login');
     }
@@ -130,14 +130,14 @@ class ClientController extends Controller
     {
         $user = Auth::user();
         $userID = Auth::id();
-    
+
         if ($userID) {
             $client = Client::where('user_id', $userID)->first();
-    
+
             if ($client) {
                 $comptes = Compte::where('id_client', $client->id_client)->get();
                 $totalBalance = $comptes->sum('solde');
-    
+
                 return view('compte.info_client', [
                     'client' => $client,
                     'comptes' => $comptes,

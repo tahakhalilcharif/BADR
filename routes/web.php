@@ -29,9 +29,7 @@ Route::get('/products', function () {
     return view('products');
 })->name('products');
 
-Route::get('/information_client', function () {
-    return view('information_client');
-})->name('information_client');
+
 
 Route::get('/services', function () {
     return view('services');
@@ -59,7 +57,7 @@ Route::get('/entreprises_carte', function () {
 
 // User actions routes
 Route::post('/inscrire', [InscriptionController::class, 'inscrire']);
-Route::post('/logout', [SessionController::class, 'logout']);
+Route::get('/logout', [SessionController::class, 'logout']);
 Route::post('/login', [SessionController::class, 'login']);
 Route::post('/open_account', [CompteController::class, 'new_account']);
 
@@ -105,10 +103,4 @@ Route::middleware(['verified_user'])->group(function () {
 
 
 });
-
-
-//api routes for the bot
-//Route::get('/balance', [ChatbotController::class, 'getBalance']);
-//
-Route::get('/balance', [ChatbotController::class, 'getBalance']);
 

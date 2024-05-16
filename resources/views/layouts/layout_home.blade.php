@@ -41,7 +41,7 @@
 
                                 <li class="badr-nav-link nav-link"> <a href="{{ route('products') }}">Products</a>
                                 </li>
-                                <li class="badr-nav-link nav-link"> <a href="{{ route('information_client') }}">information</a>
+                                <li class="badr-nav-link nav-link"> <a href="{{ route('compte.info_client') }}">information</a>
                                 </li>
 
                                 <li class="badr-nav-link nav-link">

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Client;
+use App\Models\Demande;
 use App\Models\Produit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -58,6 +59,11 @@ class Compte extends Model
     {
         $label = ClasseCompte::where('classe' ,$this->classe)->first() ;
         return $label->label;
+    }
+
+    public function demandes()
+    {
+        return $this->hasMany(Demande::class, 'id_compte');
     }
 
 }

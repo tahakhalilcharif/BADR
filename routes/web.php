@@ -7,6 +7,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompteController;
 use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\ClientActivationController;
 
@@ -85,10 +86,11 @@ Route::middleware(['verified_user'])->group(function () {
     //Account functionalities
     Route::get('/compte/{num_cmt}', [CompteController::class, 'show_info_compte'])->name('compte.info_compte');
     Route::get('/compte', [ClientController::class, 'show_info'])->name('compte.info_client');
-    Route::get('/compte/{id}/products', [CompteController::class, 'showProducts'])->name('compte.show_products');
+    Route::get('/ac', [CompteController::class, 'showProducts'])->name('compte.show_products');
     Route::post('/compte/transfer_money', [CompteController::class, 'transferMoney'])->name('compte.transfer_money');
     Route::get('/new_account_form' , [CompteController::class ,'showForm'])->name('new_account_form');
-
+    Route::get('/compte/{id}/demand_product', [CompteController::class, 'showOrderProductPage'])->name('compte.demand_product');
+    Route::post('/compte/store_product_order/{id}', [CompteController::class, 'storeProductOrder'])->name('compte.store_product_order');
 
     //Upate User Information Routes
     Route::get('/change-password', [ClientController::class, 'showChangePasswordForm'])->name('change_password');
@@ -101,9 +103,6 @@ Route::middleware(['verified_user'])->group(function () {
 
 });
 
-
-//api routes for the bot
-//Route::get('/balance', [ChatbotController::class, 'getBalance']);
-//
-Route::get('/balance', [ChatbotController::class, 'getBalance']);
-
+Route::middleware(['auth', 'employee'])->group(function () {
+    Route::get('/employee/home', [EmployeeController::class, 'index'])->name('employee.home_emp');
+});

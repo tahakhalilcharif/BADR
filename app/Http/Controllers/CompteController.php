@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Carte;
 use App\Models\Client;
 use App\Models\Compte;
 use App\Models\Wilaya;
+use App\Models\Demande;
 use App\Models\ListeAgence;
 use App\Models\ClasseCompte;
 use Illuminate\Http\Request;
@@ -66,14 +68,22 @@ class CompteController extends Controller
 
     public function show_info_compte($num_cmt)
     {
+        $user = auth()->user();
+        $client = Client::where('user_id', $user->id)->first();
         $compte = Compte::where('num_cmt', $num_cmt)->first();
-
         if (!$compte) {
             return redirect()->back()->with('error', 'Account not found.');
         }
-
-        return view('compte.info_compte', compact('compte'));
+    
+        $demandes = Demande::where('id_compte', $compte->id_cmpt)->get();
+    
+        $cartes = $demandes->map(function($demande) {
+            return Carte::where('id_carte', $demande->id_carte)->first();
+        });
+    
+        return view('compte.info_compte', compact('compte', 'demandes', 'cartes' ,'client'));
     }
+    
 
     public function activate($num_cmt)
     {
@@ -175,4 +185,40 @@ class CompteController extends Controller
         return redirect()->back()->with('success', 'Money transferred successfully.');
     }
 
+    public function showOrderProductPage($id)
+    {
+        $compte = Compte::findOrFail($id);
+        $client = auth()->user()->client;
+        if($client->revenu<100000){
+            $cartes = Carte::where('id_carte',1)->get();
+        }else{
+            $cartes = Carte::where('id_carte',2)->get();
+        }
+
+        return view('compte.demand_product', compact('compte' , 'cartes'));
+    }
+
+    public function storeProductOrder(Request $request, $id)
+    {
+        // Validate the form data
+        $request->validate([
+            'product_name' => 'required', // Assuming 'product_name' is the select field name
+        ]);
+
+        // Create a new Demandes instance
+        $demande = new Demande();
+
+        // Fill the instance with form data
+        $demande->id_client = auth()->user()->client->id_client;
+        $demande->id_carte = $request->product_name;
+        $demande->id_compte = $id; // Assuming $id is the account ID passed from the route
+        $demande->date_demande = Carbon::now();
+        $demande->statut = 'en attente';
+
+        // Save the demand to the database
+        $demande->save();
+
+        // Redirect back with success message
+        return redirect()->route('compte.info_client');
+    }
 }

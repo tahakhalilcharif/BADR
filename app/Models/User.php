@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Client;
+use App\Models\Employee;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -50,6 +51,20 @@ class User extends Authenticatable implements MustVerifyEmail
     public function client()
     {
         return $this->hasOne(Client::class,'user_id');
+    }
+
+    public function isClient(){
+        return $this->client()->exists();
+    }
+
+    public function employee()
+    {
+        return $this->hasOne(Employee::class);
+    }
+
+    public function isEmployee()
+    {
+        return $this->employee()->exists();
     }
     
     public function sendEmailVerificationNotification()

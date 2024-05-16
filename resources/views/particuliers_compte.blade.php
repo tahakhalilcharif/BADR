@@ -21,7 +21,7 @@
         </div>
     </div>
     <details>
-        <summary>    ABOUT DINARS BANK ACCOUNT </summary>
+        <summary>    ABOUT DINARS ACCOUNT </summary>
         <div class="collapsible-content">
             <h5>  File to provide: </h5>
             <p>* Copy of valid identity document </p>
@@ -42,7 +42,7 @@
     </details>
 
     <details>
-        <summary>    ABOUT CURRENCY BANK ACCOUNT </summary>
+        <summary>    ABOUT CURRENCY ACCOUNT </summary>
         <div class="collapsible-content">
             <p>
                 The BADR currency account is an account that works with a single currency.

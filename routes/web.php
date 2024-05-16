@@ -33,6 +33,8 @@ Route::get('/products', function () {
     return view('products');
 })->name('products');
 
+
+
 Route::get('/services', function () {
     return view('services');
 })->name('services');
@@ -49,12 +51,17 @@ Route::get('/particuliers_carte' , function(){
     return view('particuliers_carte');
 })->name('particuliers_carte');
 
-Route::get('/entreprises', function () {
-    return view('entreprises');
-})->name('entreprises');
+Route::get('/entreprises_compte', function () {
+    return view('entreprises_compte');
+})->name('entreprises_compte');
+
+Route::get('/entreprises_carte', function () {
+    return view('entreprises_carte');
+})->name('entreprises_carte');
 
 // User actions routes
 Route::post('/inscrire', [InscriptionController::class, 'inscrire']);
+Route::get('/logout', [SessionController::class, 'logout']);
 Route::get('/logout', [SessionController::class, 'logout']);
 Route::post('/login', [SessionController::class, 'login']);
 Route::post('/open_account', [CompteController::class, 'new_account']);
@@ -65,14 +72,14 @@ Route::post('/webhooks/rest/webhook', 'App\Http\Controllers\ChatbotController@ha
 
 
 
-//Tries 
+//Tries
 
 //client creation routes
 Route::get('/create-client', [ClientController::class,'showClientCreationForm'])->name('client.create-form');
 Route::post('/create-client', [ClientController::class ,'createClient'])->name('client.create');
 //Route::get('/creer_client', [ClientController::class, 'showClientRegistrationForm']);
 //Route::post('/nv_client', [ClientController::class, 'nv_client']);
-//client activation routes 
+//client activation routes
 Route::get('/activation-page', [ClientActivationController::class, 'showActivationPage'])->name('activation.page');
 Route::post('/activate-client', [ClientActivationController::class, 'activateClient'])->name('activate.client');
 

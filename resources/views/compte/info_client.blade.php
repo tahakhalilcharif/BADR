@@ -1,4 +1,8 @@
 @extends('layouts.layout_home')
+@section('head')
+    <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
+@endsection
+@section('title', 'information_client')
 
 @section('content')
     <div style="border: 2px solid rgb(14, 110, 38);">

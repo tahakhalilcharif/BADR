@@ -15,7 +15,7 @@ class SessionController extends Controller
             'log_in_email' => 'required',
             'login_mot_de_passe' => 'required',
         ]);
-    
+
         if (Auth::attempt(['email' => $loginData['log_in_email'], 'password' => $loginData['login_mot_de_passe']])) {
             $user = Auth::user();
             if($user->isEmployee()){
@@ -46,6 +46,7 @@ class SessionController extends Controller
     public function logout(){
         auth()->user()->tokens()->delete();
         auth()->logout();
+        return redirect('/');
         return redirect('/');
     }
 

@@ -15,31 +15,50 @@
     background-color: #94d441;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
     cursor: pointer;
     z-index: 1000;
 
-    /* Alignez le texte au centre du bouton */
+    /* Aligne le texte au centre du bouton */
     display: flex;
     justify-content: center;
     align-items: center;
 
-    /* Ajustez le texte dans le bouton */
+    /* Ajuste la taille du texte dans le bouton */
     font-size: 1rem;
 }
 
 
 
 
+/* Fenêtre de chat */
+.chat-window {
+    position: fixed;
+    bottom: 100px;
+    left: 75%;
+    width: 300px;
+    max-height: 400px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    display: none;
+    overflow: hidden;
+}
+
 /* En-tête de la fenêtre de discussion */
 .chat-header {
-    padding: 10px;
-    background-color: #8a9e72;
+    padding: 12px;
+    background-color: #3a3f44; /* Couleur sombre */
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
 /* Bouton de fermeture de la fenêtre */
@@ -47,43 +66,50 @@
     background: none;
     border: none;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     cursor: pointer;
 }
 
 /* Conteneur des messages de discussion */
 .chat-container {
-    padding: 10px;
-    max-height: 200px;
+    padding: 12px;
+    max-height: 700px; /* Réduisez la hauteur maximale */
     overflow-y: auto;
-    border-bottom: 1px solid #ccc;
+    background-color: white;
 }
 
 /* Pied de la fenêtre de discussion */
 .chat-footer {
-    padding: 0px; /* Réduisez le padding pour minimiser l'espace en bas */
+    padding: 3px; /* Réduire le padding */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-top: 1px solid #ddd; /* Bordure supérieure */
+    background-color: #f0f0f0;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
-
 
 /* Champ d'entrée de texte */
 #user-input {
     flex-grow: 1;
-    padding: 5px;
+    padding: 4px; /* Réduisez le padding interne */
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 4px;
+    margin-right: 5px; /* Réduisez la marge à droite */
 }
 
 /* Bouton d'envoi de message */
-.chat-footer button {
-    margin-left: 5px;
-    background-color: #809b73;
+#send-button {
+    padding: 4px 10px; /* Réduisez le padding interne */
+    background-color: #3a3f44; /* Couleur sombre */
     color: white;
     border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s; /* Transition douce */
 }
 
+#send-button:hover {
+    background-color: #2a2e33; /* Couleur légèrement plus sombre au survol */
+}

@@ -4,8 +4,6 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-
-
 #myWrapperContainer {
     display: flex;
     flex-direction: column;
@@ -19,7 +17,9 @@
     align-items: center;
     justify-content: space-between;
     border: none;
-    margin: 10px 0;
+    margin-top: 15px;
+    margin-left: 45Px;
+    margin-right: 45px;
 }
 
 
@@ -48,14 +48,6 @@
     margin-bottom: 12px;
 }
 
-
-.sophisticated-list p {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-    color: #666;
-}
-
-
 .sophisticated-list p::before {
     content: '• ';
     color: #ff6b6b;
@@ -63,31 +55,26 @@
     margin-right: 8px;
 }
 
-
 details {
-    width: 80%;
-    margin-left: 40PX;
+    width: 90%;
+    margin-left: 50PX;
     padding: 10px;
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-sizing: border-box;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     overflow: auto;
 }
 
-
 summary {
-    cursor: pointer;
-    font-weight: bold;
-    color: #0d0d0e;
     padding: 5px;
-    border-radius: 5px;
-    border: none;
+    font-weight: bold;
     background-color: #e9ecef;
-    box-sizing: border-box;
+    border-radius: 5px;
+    cursor: pointer;
 }
-
 
 summary:hover {
     color: #4ce937;
@@ -95,11 +82,5 @@ summary:hover {
 }
 
 
-.collapsible-content {
-    padding: 5px;
-    margin-top: 0px;
-    border-top: 1px solid #ccc;
-    box-sizing: border-box;
-}
 
 

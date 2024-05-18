@@ -30,7 +30,7 @@
         <tbody>
             @foreach ($comptes as $compte)
                 <tr>
-                    <td>{{ $compte->classeLibelle() }}</td>
+                    <td><a href="{{ route('compte.info_compte', ['num_cmt' => $compte->num_cmt]) }}">{{ $compte->classeLibelle() }}</a></td>
                     <td>{{ $compte->solde }}</td>
                     <td>{{ $compte->derniere_trn }}</td>
                     <td>{{ $compte->statut }}</td>

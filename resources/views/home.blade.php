@@ -10,15 +10,9 @@
 @section('content')
 <div id="main-container">
     <section class="client">
-        <div class="background-image" style="background-image: url('{{ asset('images/homee.avif') }}');"></div>
-        <p>test</p>
+        <div class="background-image" style="background-image: url('{{ asset('images/homee.avif') }}');">
+        </div>
     </section>
-
-
-
-
-
-
 <section class="services">
     <h1 class="heading">services </h1>
     <div class="box-container">
@@ -142,3 +136,13 @@
 
 @endsection
 
+
+@section('scripts')
+
+@if (session('status'))
+<script>
+    alert("{{ session('status') }}");
+</script>
+@endif
+
+@endsection

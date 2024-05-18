@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Client;
 use App\Models\Employee;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\ClientActivationCode;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Notifications\EmailVerificationNotification;
@@ -70,6 +71,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
         $this->notify(new EmailVerificationNotification);
+    }
+
+    public function activationCode()
+    {
+    return $this->hasOne(ClientActivationCode::class);
     }
     
     

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Client;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,15 +14,16 @@ class ClientActivationCode extends Model
     protected $table = 'client_activation_codes';
 
     protected $fillable = [
-        'id_client',
+        'user_id',
         'activation_code',
+        'is_activated',
     ];
 
     public $timestamps = false;
 
-    // Define the relationship with the Client model
-    public function client()
+    // Define the relationship with the User model
+    public function user()
     {
-        return $this->belongsTo(Client::class, 'id_client');
+        return $this->belongsTo(User::class);
     }
 }

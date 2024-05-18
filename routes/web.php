@@ -13,9 +13,6 @@ use App\Http\Controllers\ClientActivationController;
 
 // Home page
 Route::get('/', function () {
-    if(auth()->user()){
-
-    }
     return view('home');
 })->name('home');
 
@@ -77,8 +74,7 @@ Route::post('/webhooks/rest/webhook', 'App\Http\Controllers\ChatbotController@ha
 //client creation routes
 Route::get('/create-client', [ClientController::class,'showClientCreationForm'])->name('client.create-form');
 Route::post('/create-client', [ClientController::class ,'createClient'])->name('client.create');
-//Route::get('/creer_client', [ClientController::class, 'showClientRegistrationForm']);
-//Route::post('/nv_client', [ClientController::class, 'nv_client']);
+
 //client activation routes
 Route::get('/activation-page', [ClientActivationController::class, 'showActivationPage'])->name('activation.page');
 Route::post('/activate-client', [ClientActivationController::class, 'activateClient'])->name('activate.client');
@@ -112,4 +108,5 @@ Route::middleware(['verified_user'])->group(function () {
 
 Route::middleware(['auth', 'employee'])->group(function () {
     Route::get('/employee/home', [EmployeeController::class, 'index'])->name('employee.home_emp');
+    Route::get('/employee/unactivated-users', [EmployeeController::class, 'unactivatedUsers'])->name('employee.unactivated_users');
 });

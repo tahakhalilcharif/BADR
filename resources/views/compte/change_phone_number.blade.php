@@ -1,17 +1,38 @@
 @extends('layouts.layout_home')
+@section('head')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/info_client.css') }}">
+@endsection
+@section('title', 'information_client')
+
 
 @section('content')
-    <div style="border: 2px solid rgb(14, 110, 38);">
+
+    <div class="change">
         <h1>Change Phone Number</h1>
         <form action="{{ route('update_phone_number') }}" method="POST">
             @csrf
             <label for="current_password">Current Password:</label>
             <input type="password" id="current_password" name="current_password" required><br><br>
-            
+
             <label for="new_phone_number">New Phone Number:</label>
             <input type="tel" id="new_phone_number" name="new_phone_number" required><br><br>
-            
+
             <button type="submit">Change Phone Number</button>
         </form>
+
     </div>
+
+    <div class="account-actions">
+        <h2>Account Actions:</h2>
+        <ul>
+            <li><a href="{{ route('change_password') }}">Change Password</a></li>
+            <li><a href="{{ route('change_email') }}">Change Email</a></li>
+            <li><a href="{{ route('change_phone_number') }}">Change Phone Number</a></li>
+            <li><a href="{{ route('compte.info_client') }}">My Information</a></li>
+        </ul>
+    </div>
+ 
 @endsection

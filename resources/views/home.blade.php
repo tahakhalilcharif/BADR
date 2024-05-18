@@ -2,24 +2,52 @@
 
 @section('head')
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 @endsection
 @section('title', 'BADR Bank')
 
 @section('content')
-    <div class="auth-container">
-        <form action="/logout" method="POST">
-            @csrf
-            <button type="submit">Log out</button>
-        </form>
+<div id="main-container">
+    <section class="client">
+        <div class="background-image" style="background-image: url('{{ asset('images/homee.avif') }}');"></div>
+        <p>test</p>
+    </section>
 
-        <form action="{{ route('compte.info_client') }}" method="GET">
-            @csrf
-            <button type="submit" class="btn btn-primary">View Account</button>
-        </form>
+
+
+
+
+
+<section class="services">
+    <h1 class="heading">services </h1>
+    <div class="box-container">
+        <div class="box">
+            <img src="{{ asset('images/icon1.png') }}">
+            <h3> My informations</h3>
+        </div>
+
+        <div class="box">
+            <img src="{{ asset('images/icone2.png') }}">
+            <h3>My products </h3>
+
+        </div>
+
+        <div class="box">
+            <img src="{{ asset('images/icone3.png') }}">
+            <h3> My transaction </h3>
+        </div>
+
+        <div class="box">
+            <img src="{{ asset('images/icon4.png') }}">
+            <h3>My accounts</h3>
+
+        </div>
+
     </div>
+</section>
+
+</div>
 @endsection
 
 

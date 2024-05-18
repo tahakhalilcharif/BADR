@@ -249,7 +249,7 @@
             };
 
             var token = "{{ $token }}";
-            
+
             xhr.open("POST", "http://localhost:5005/webhooks/rest/webhook", true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("Authorization", "Bearer " + token);

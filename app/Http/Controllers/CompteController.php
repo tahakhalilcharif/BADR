@@ -9,6 +9,7 @@ use App\Models\Compte;
 use App\Models\Wilaya;
 use App\Models\Demande;
 use App\Models\ListeAgence;
+use App\Models\Transaction;
 use App\Models\ClasseCompte;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -155,35 +156,50 @@ class CompteController extends Controller
         $request->validate([
             'recipient_account_number' => 'required|exists:comptes,num_cmt',
             'amount' => 'required|numeric|min:1',
+            'source_account_id' => 'required|exists:comptes,id_cmpt',  // Add validation for source_account_id
         ]);
-
-        //$sourceAccount = auth()->user()->client->comptes()->where('id_cmpt', $request->input('source_account_id'))->first();
+    
         $user = auth()->user();
-        $client = Client::where('id_client',$user->id)->first();
-        $sourceAccount = Compte::where('id_cmpt' , $request['source_account_id'])->first();
-
+        $client = Client::where('id_client', $user->id)->first();
+        $sourceAccount = Compte::where('id_cmpt', $request->input('source_account_id'))->first();
+    
         if (!$sourceAccount) {
             return redirect()->back()->with('error', 'Source account does not exist.');
         }
-
-        $recipientAccount = Compte::where('num_cmt', $request['recipient_account_number'])->first();
-
+    
+        $recipientAccount = Compte::where('num_cmt', $request->input('recipient_account_number'))->first();
+    
         if (!$recipientAccount) {
             return redirect()->back()->with('error', 'Recipient account does not exist.');
         }
-
+    
         if ($sourceAccount->solde < $request->input('amount')) {
             return redirect()->back()->with('error', 'Insufficient balance.');
         }
-
-        $sourceAccount->solde -= $request->input('amount');
-        $recipientAccount->solde += $request->input('amount');
-
+    
+        $sourceAccount->solde -= $request['amount'];
+        $recipientAccount->solde += $request['amount'];
+    
         $sourceAccount->save();
         $recipientAccount->save();
-
+    
+        $transactionS = new Transaction();
+        $transactionS->id_compte_source = $sourceAccount->id_cmpt;  // Use primary key
+        $transactionS->id_compte_destination = $recipientAccount->id_cmpt;  // Use primary key
+        $transactionS->montant = $request['amount'];
+        $transactionS->type = 'D';
+        $transactionS->save();
+    
+        $transactionD = new Transaction();
+        $transactionD->id_compte_source = $recipientAccount->id_cmpt;  // Use primary key
+        $transactionD->id_compte_destination = $sourceAccount->id_cmpt;  // Use primary key
+        $transactionD->montant = $request['amount'];
+        $transactionD->type = 'C';
+        $transactionD->save();
+    
         return redirect()->back()->with('success', 'Money transferred successfully.');
     }
+    
 
     public function showOrderProductPage($id)
     {
@@ -200,25 +216,20 @@ class CompteController extends Controller
 
     public function storeProductOrder(Request $request, $id)
     {
-        // Validate the form data
         $request->validate([
-            'product_name' => 'required', // Assuming 'product_name' is the select field name
+            'product_name' => 'required', 
         ]);
 
-        // Create a new Demandes instance
         $demande = new Demande();
 
-        // Fill the instance with form data
         $demande->id_client = auth()->user()->client->id_client;
         $demande->id_carte = $request->product_name;
-        $demande->id_compte = $id; // Assuming $id is the account ID passed from the route
+        $demande->id_compte = $id; 
         $demande->date_demande = Carbon::now();
         $demande->statut = 'en attente';
 
-        // Save the demand to the database
         $demande->save();
 
-        // Redirect back with success message
         return redirect()->route('compte.info_client');
     }
 
@@ -227,4 +238,11 @@ class CompteController extends Controller
         return view('compte.transaction' , compact('compte'));
     }
 
+    public function accountStatement($num_cmt)
+    {
+        $compte = Compte::where('num_cmt', $num_cmt)->firstOrFail();
+        $transactions = Transaction::where('id_compte_source', $compte->id_cmpt)->get();
+
+        return view('compte.account_statement', compact('compte', 'transactions'));
+    }
 }

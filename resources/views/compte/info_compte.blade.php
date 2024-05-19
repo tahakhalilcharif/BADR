@@ -58,7 +58,7 @@
         <h2>Account Actions:</h2>
         <ul>
             <li><a  href="{{route('compte.transaction' , ['num_cmt' => $compte->num_cmt])}}">Transaction</a></li>
-            <li><a href="{{ route('new_account_form') }}">Account statement</a></li>
+            <li><a href="{{ route('compte.account_statement', ['num_cmt' => $compte->num_cmt]) }}">Account statement</a></li>
             @if (!$compte->produits()->exists() && $demandes->isEmpty())
                 <li><a href="{{ route('compte.demand_product', ['id' => $compte->id_cmpt]) }}">Order Product</a></li>
             @endif

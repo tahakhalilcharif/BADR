@@ -1,10 +1,15 @@
 @extends('layouts.layout_emp')
 
+@section('head')
+
+<link rel="stylesheet" href="{{ asset('css/addclient.css') }}">
+@endsection
+
 @section('title', 'Client Registration')
 
 @section('content-emp')
-    <h2>Client Creation</h2>
-    
+    <h2 class="section-title">Creat client</h2>
+
     @if ($errors->any())
         <div class="alert alert-danger">
             <strong>Whoops! Something went wrong!</strong><br><br>
@@ -16,7 +21,7 @@
         </div>
     @endif
 
-    <div class="container">
+    <div class="container-add">
         <form action="{{ route('employee.store_client') }}" method="POST">
             @csrf
             <div class="mb-3">

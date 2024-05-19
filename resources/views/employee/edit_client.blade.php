@@ -1,9 +1,13 @@
 @extends('layouts.layout_emp')
 
+@section('head')
+<link rel="stylesheet" href="{{ asset('css/addclient.css') }}">
+@endsection
+
 @section('title', 'Edit Client')
 
 @section('content-emp')
-<h1 class="section-title">Edit Client</h1>
+<h2 class="section-title">Edit Client</h2>
 
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -15,8 +19,8 @@
     </div>
 @endif
 
-<h2>Client Modification</h2>
-    <div class="container">
+
+    <div class="container-add">
         <form action="{{ route('employee.update_client', ['id' => $client->id_client]) }}" method="POST">
             @csrf
             <div class="mb-3">

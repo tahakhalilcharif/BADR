@@ -28,12 +28,15 @@
     <tbody>
         @foreach ($clients as $client)
             <tr>
-                <td>{{ $client->id }}</td>
+                <td>{{ $client->id_client }}</td>
                 <td>{{ $client->nom }}</td>
                 <td>{{ $client->prenom }}</td>
                 <td>{{ $client->email }}</td>
                 <td>{{ $client->num_tlf }}</td>
                 <td>{{ $client->adresse }}</td>
+                <td>
+                    <a href="{{ route('employee.edit_client', ['id' => $client->id_client]) }}" class="btn btn-secondary">Modify</a>
+                </td>
             </tr>
         @endforeach
     </tbody>

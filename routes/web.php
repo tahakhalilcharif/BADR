@@ -109,5 +109,6 @@ Route::middleware(['auth', 'employee'])->group(function () {
     Route::get('/employee/statistics', [EmployeeController::class, 'statistics'])->name('employee.statistics');
     Route::get('/employee/add-client', [EmployeeController::class, 'showClientCreationForm'])->name('employee.add_client');
     Route::post('/employee/store-client', [EmployeeController::class, 'createClient'])->name('employee.store_client');
-
+    Route::get('/employee/client/{id}/edit', [ClientController::class, 'edit'])->name('employee.edit_client');
+    Route::post('/employee/client/{id}/update', [ClientController::class, 'update'])->name('employee.update_client');
 });

@@ -17,6 +17,7 @@
         <thead>
             <tr>
                 <th>Client Name</th>
+                <th>Account</th>
                 <th>Account Number</th>
                 <th>Balance</th>
                 <th>Date Opened</th>
@@ -28,6 +29,7 @@
             @foreach ($accounts as $account)
                 <tr>
                     <td>{{ $account->client ? $account->client->nom : 'N/A' }}</td>
+                    <td>{{$account->classeLibelle()}}</td>
                     <td>{{ $account->num_cmt }}</td>
                     <td>{{ $account->solde }}</td>
                     <td>{{ $account->date_ouv }}</td>

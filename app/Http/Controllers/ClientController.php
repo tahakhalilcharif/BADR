@@ -236,4 +236,43 @@ class ClientController extends Controller
 
         return redirect()->route('compte.info_client')->with('success', 'Phone number updated successfully.');
     }
+
+
+    public function edit($id)
+    {
+        $client = Client::findOrFail($id);
+        $wilayas = Wilaya::all();
+        $formesJuridiques = FormeJuridique::all();
+
+        return view('employee.edit_client', compact('client', 'wilayas', 'formesJuridiques'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            'revenu' => 'required|string|max:255',
+            'sexe' => 'required|string|max:255',
+            'date_n' => 'required|date',
+            'lieu_n' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'num_tlf' => 'required|string|max:20',
+            'adresse' => 'required|string|max:255',
+            'select_wilaya' => 'required|string|max:255',
+            'commune' => 'required|string|max:255',
+            'daira' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'type' => 'nullable|string|max:255',
+            'forme_juridique_id' => 'nullable|exists:forme_juridiques,id',
+            'denomination' => 'nullable|string|max:255',
+            'activite' => 'nullable|string|max:255',
+        ]);
+
+        $client = Client::findOrFail($id);
+        $client->update($request->all());
+
+        return redirect()->route('employee.clients')->with('success', 'Client information updated successfully.');
+    }
+
 }

@@ -1,0 +1,174 @@
+@extends('layouts.layout_emp')
+
+@section('title', 'Edit Client')
+
+@section('content-emp')
+<h1 class="section-title">Edit Client</h1>
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+<h2>Client Modification</h2>
+    <div class="container">
+        <form action="{{ route('employee.update_client', ['id' => $client->id_client]) }}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom:</label>
+                <input type="text" class="form-control" id="nom" name="nom" value="{{ old('nom', $client->nom) }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="prenom" class="form-label">Prénom:</label>
+                <input type="text" class="form-control" id="prenom" name="prenom" value="{{ old('prenom', $client->prenom) }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="revenu" class="form-label">Revenu:</label>
+                <input type="text" class="form-control" id="revenu" name="revenu" value="{{ old('revenu', $client->revenu) }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="sexe" class="form-label">Sexe:</label>
+                <select class="form-select" id="sexe" name="sexe" required>
+                    <option value="">Select your gender</option>
+                    <option value="homme" {{ old('sexe', $client->sexe) == 'homme' ? 'selected' : '' }}>Homme</option>
+                    <option value="femme" {{ old('sexe', $client->sexe) == 'femme' ? 'selected' : '' }}>Femme</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="date_n" class="form-label">Date de naissance:</label>
+                <input type="date" class="form-control" id="date_n" name="date_n" value="{{ old('date_n', $client->date_n) }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="lieu_n" class="form-label">Lieu de naissance:</label>
+                <input type="text" class="form-control" id="lieu_n" name="lieu_n" value="{{ old('lieu_n', $client->lieu_n) }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $client->email) }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="num_tlf" class="form-label">Numéro de téléphone:</label>
+                <input type="text" class="form-control" id="num_tlf" name="num_tlf" value="{{ old('num_tlf', $client->num_tlf) }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="adresse" class="form-label">Adresse:</label>
+                <input type="text" class="form-control" id="adresse" name="adresse" value="{{ old('adresse', $client->adresse) }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="select_wilaya" class="form-label">Wilaya:</label>
+                <select class="form-select" id="select_wilaya" name="select_wilaya" required>
+                    <option value="">Select a Wilaya</option>
+                    @foreach ($wilayas as $wilaya)
+                        <option value="{{ $wilaya->wilaya }}" {{ old('select_wilaya', $client->wilaya) == $wilaya->wilaya ? 'selected' : '' }}>{{$wilaya->code}} - {{ $wilaya->wilaya }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="commune" class="form-label">Commune:</label>
+                <input type="text" class="form-control" id="commune" name="commune" value="{{ old('commune', $client->commune) }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="daira" class="form-label">Daira:</label>
+                <input type="text" class="form-control" id="daira" name="daira" value="{{ old('daira', $client->daira) }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="category" class="form-label">Catégorie:</label>
+                <select class="form-select" id="category" name="category" onchange="toggleFields()" required>
+                    <option value="">Select a Category</option>
+                    <option value="Personne Physique" {{ old('category', $client->category) == 'Personne Physique' ? 'selected' : '' }}>Personne Physique</option>
+                    <option value="Personne Morale" {{ old('category', $client->category) == 'Personne Morale' ? 'selected' : '' }}>Personne Morale</option>
+                </select>
+            </div>
+
+            <div id="typeFields" class="mb-3" style="{{ old('category', $client->category) == 'Personne Morale' ? '' : 'display: none;' }}">
+                <label for="type" class="form-label">Type:</label>
+                <select class="form-select" id="type" name="type" onchange="toggleTypeFields()">
+                    <option value="">Select a Type</option>
+                    <option value="Professionnel" {{ old('type', $client->type) == 'Professionnel' ? 'selected' : '' }}>Professionnel</option>
+                    <option value="Commercant" {{ old('type', $client->type) == 'Commercant' ? 'selected' : '' }}>Commerçant</option>
+                    <option value="Particulier" {{ old('type', $client->type) == 'Particulier' ? 'selected' : '' }}>Particulier</option>
+                </select>
+            </div>
+
+            <div id="formeJuridiqueFields" class="mb-3" style="{{ old('type', $client->type) ? '' : 'display: none;' }}">
+                <label for="forme_juridique_id" class="form-label">Forme Juridique:</label>
+                <select class="form-select" id="forme_juridique_id" name="forme_juridique_id">
+                    <option value="">Select Forme Juridique</option>
+                    @foreach($formesJuridiques as $formeJuridique)
+                        <option value="{{ $formeJuridique->id }}" {{ old('forme_juridique_id', $client->forme_juridique_id) == $formeJuridique->id ? 'selected' : '' }}>({{$formeJuridique->forme_juridique}}) {{ $formeJuridique->libelle }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div id="denominationFields" class="mb-3" style="{{ old('type', $client->type) ? '' : 'display: none;' }}">
+                <label for="denomination" class="form-label">Dénomination:</label>
+                <input type="text" class="form-control" id="denomination" name="denomination" value="{{ old('denomination', $client->denomination) }}">
+            </div>
+
+            <div id="activiteFields" class="mb-3" style="{{ old('type', $client->type) ? '' : 'display: none;' }}">
+                <label for="activite" class="form-label">Activité:</label>
+                <input type="text" class="form-control" id="activite" name="activite" value="{{ old('activite', $client->activite) }}">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Client</button>
+        </form>
+    </div>
+@endsection
+
+@section('scripts')
+    <script>
+        function toggleFields() {
+            var category = document.getElementById("category").value;
+            var typeFields = document.getElementById("typeFields");
+            var formeJuridiqueFields = document.getElementById("formeJuridiqueFields");
+            var activiteFields = document.getElementById("activiteFields");
+            var denominationFields = document.getElementById("denominationFields");
+
+            typeFields.style.display = "none";
+            formeJuridiqueFields.style.display = "none";
+            activiteFields.style.display = "none";
+            denominationFields.style.display = "none";
+
+            if (category === "Personne Physique") {
+                typeFields.style.display = "block";
+            } else if (category === "Personne Morale") {
+                formeJuridiqueFields.style.display = "block";
+                activiteFields.style.display = "block";
+                denominationFields.style.display = "block";
+            }
+        }
+
+        function toggleTypeFields() {
+            var type = document.getElementById("type").value;
+            var activiteFields = document.getElementById("activiteFields");
+
+            activiteFields.style.display = "none";
+
+            if (type === "Commercant" || type === "Professionnel") {
+                activiteFields.style.display = "block";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleFields();
+            toggleTypeFields();
+        });
+    </script>
+@endsection

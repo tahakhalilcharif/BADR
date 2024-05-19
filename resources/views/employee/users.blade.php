@@ -8,6 +8,8 @@
 
 
 @section('content-emp')
+
+@if ($unactivated_users->isNotEmpty())
 <div class="users-section">
     <h3 class="section-title">Unactivated Users</h3>
     <table class="styled-table">
@@ -31,6 +33,7 @@
         </tbody>
     </table>
 </div>
+@endif
 
 <div class="users-section">
     <h3 class="section-title">All Users</h3>

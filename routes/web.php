@@ -70,9 +70,6 @@ Route::post('/webhooks/rest/webhook', 'App\Http\Controllers\ChatbotController@ha
 
 
 
-//Tries
-Route::get('/compte/transaction/{num_cmt}',[CompteController::class , 'showTransactionPage'])->name('compte.transaction');
-
 //client creation routes
 Route::get('/create-client', [ClientController::class,'showClientCreationForm'])->name('client.create-form');
 Route::post('/create-client', [ClientController::class ,'createClient'])->name('client.create');

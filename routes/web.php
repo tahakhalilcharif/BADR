@@ -56,6 +56,7 @@ Route::get('/entreprises_carte', function () {
     return view('entreprises_carte');
 })->name('entreprises_carte');
 
+
 // User actions routes
 Route::post('/inscrire', [InscriptionController::class, 'inscrire']);
 Route::get('/logout', [SessionController::class, 'logout']);
@@ -87,6 +88,7 @@ Route::middleware(['verified_user'])->group(function () {
 
 
     //Account functionalities
+    Route::get('/compte/transaction/{num_cmt}',[CompteController::class , 'showTransactionPage'])->name('compte.transaction');
     Route::get('/compte/{num_cmt}', [CompteController::class, 'show_info_compte'])->name('compte.info_compte');
     Route::get('/compte', [ClientController::class, 'show_info'])->name('compte.info_client');
     Route::get('/ac', [CompteController::class, 'showProducts'])->name('compte.show_products');

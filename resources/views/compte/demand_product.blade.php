@@ -1,7 +1,13 @@
 @extends('layouts.layout_home')
 
+@section('head')
+
+    <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/info_client.css') }}">
+@endsection
+
 @section('content')
-    <div class="container">
+    <div class="container-dmd">
         <h1>Order Product for Account: {{ $compte->num_cmt }}</h1>
 
         <form action="{{ route('compte.store_product_order', ['id' => $compte->id_cmpt]) }}" method="POST">
@@ -13,7 +19,7 @@
                 <option value="{{ $carte->id_carte }}">{{ $carte->libelle }}</option>
                 @endforeach
             </select>
-            
+
             <button type="submit">Confirm Order</button>
         </form>
     </div>

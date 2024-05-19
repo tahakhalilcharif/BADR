@@ -38,9 +38,6 @@
                         <div class="navbar-nav ms-auto">
                             <ul>
                                 <li class="badr-nav-link nav-link"> <a href="{{ route('home') }}">Home </a></li>
-
-                                <li class="badr-nav-link nav-link"> <a href="{{ route('products') }}">Products</a>
-                                </li>
                                 <li class="badr-nav-link nav-link"> <a href="{{ route('compte.info_client') }}">Information</a>
                                 </li>
 

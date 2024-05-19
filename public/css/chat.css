@@ -77,23 +77,22 @@
     overflow-y: auto;
     background-color: white;
 }
-
 /* Pied de la fenêtre de discussion */
 .chat-footer {
-    padding: 3px; /* Réduire le padding */
+    padding: 5px; /* Réduire le padding */
     display: flex;
-    justify-content: space-between;
     align-items: center;
     border-top: 1px solid #ddd; /* Bordure supérieure */
     background-color: #f0f0f0;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
+    height: 40px; /* Hauteur fixe */
 }
 
 /* Champ d'entrée de texte */
 #user-input {
     flex-grow: 1;
-    padding: 4px; /* Réduisez le padding interne */
+    padding: 6px; /* Réduisez le padding interne */
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-right: 5px; /* Réduisez la marge à droite */
@@ -101,7 +100,7 @@
 
 /* Bouton d'envoi de message */
 #send-button {
-    padding: 4px 10px; /* Réduisez le padding interne */
+    padding: 6px 12px; /* Réduisez le padding interne */
     background-color: #3a3f44; /* Couleur sombre */
     color: white;
     border: none;

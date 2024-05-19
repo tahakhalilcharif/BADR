@@ -1,0 +1,55 @@
+.activation-content {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.activation-content h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.activation-content p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.activation-content form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.activation-content label {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.activation-content input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.activation-content button {
+    background-color: #0e6e26;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+}
+
+.activation-content button:hover {
+    background-color: #0a481a;
+}
+

@@ -1,5 +1,4 @@
-
-.account-info, .account-actions {
+.account-info, .account-actions, .account-details , .container-trn  {
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -7,39 +6,32 @@
     flex-grow: 1; /* Ajout de flex-grow pour permettre aux éléments de s'étirer */
 }
 
-.account-actions  {
+.account-actions {
     flex-basis: 30%;
     margin-top: 30px;
-    margin-bottom: 25PX;
+    margin-bottom: 25px;
     margin-left: 20px;
     margin-right: 40px;
-
 }
 
-.change ,.account-info {
+.change, .account-info, .account-details ,.container-trn  {
     flex-basis: 60%;
     margin-top: 30px;
-    margin-bottom: 25PX;
+    margin-bottom: 25px;
     margin-right: 40px;
-    margin-left: 50px;}
+    margin-left: 50px;
+}
 
-    .account-info h1{
-
-        color: #333;
-        margin-bottom: 15px;
-        font-weight: 600;
-        text-align: center;
-        font-size: 1.8rem;
-    }
-
-
-
-     .account-actions h2 {
+.account-info h1, .account-details h1 , .account-details h2{
     color: #333;
     margin-bottom: 15px;
     font-weight: 600;
     text-align: center;
+    font-size: 1.8rem;
+    text-align: center;
 }
+
+
 
 .divider {
     height: 2px;
@@ -48,18 +40,17 @@
     border-radius: 1px;
 }
 
-.account-info p {
+.account-info p, .account-details p {
     margin: 10px 0;
     color: #646464;
     font-size: 16px;
     line-height: 1.6;
 }
 
-.account-info p strong {
+.account-info p strong, .account-details p strong {
     font-weight: 500;
     color: #333;
 }
-
 
 .account-actions ul {
     list-style: none;
@@ -107,7 +98,7 @@
     margin-bottom: 20px; /* Augmentation de l'espace sous le titre */
     font-weight: 600;
     text-align: center;
-    font-size: 10px;
+    font-size: 16px;
     border-bottom: 2px solid green; /* Ajout d'une bordure inférieure verte */
     padding-bottom: 10px; /* Ajout d'un espace entre la bordure et le texte */
 }
@@ -142,17 +133,17 @@
 }
 
 .change button:hover {
-    background:#0e6e26;
+    background: #0e6e26;
 }
 
-.account-info {
+.account-info, .account-details {
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background: #fafafa;
 }
 
-.account-info h1 {
+.account-info h1, .account-details h1 {
     color: #333;
     margin-bottom: 15px;
     font-weight: 600;
@@ -167,46 +158,45 @@
     border-radius: 1px;
 }
 
-.account-info p {
+.account-info p, .account-details p {
     margin: 10px 0;
     color: #646464;
     font-size: 16px;
     line-height: 1.6;
 }
 
-.account-info table {
+.account-info table, .account-details table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     background-color: #f9f9f9;
 }
 
-.account-info th, .account-info td {
+.account-info th, .account-info td, .account-details th, .account-details td {
     padding: 8px;
     border: 1px solid #e0e0e0;
     text-align: left;
 }
 
-.account-info th {
+.account-info th, .account-details th {
     background-color: #eaeaea;
     color: #555;
     font-weight: 500;
 }
 
-.account-info td {
+.account-info td, .account-details td {
     background-color: #ffffff;
     color: #666;
 }
 
-.account-info tr:nth-child(even) {
+.account-info tr:nth-child(even), .account-details tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-.account-info tr:hover {
+.account-info tr:hover, .account-details tr:hover {
     background-color: #f5f5f5;
 }
-
-.account-info button {
+.account-info button, .account-details button, .account-actions button {
     background: #0e6e26;
     color: #fff;
     border: none;
@@ -216,10 +206,118 @@
     transition: background-color 0.3s ease;
 }
 
-.account-info button:hover {
+.account-info button:hover, .account-details button:hover, .account-actions button:hover {
     background: #0a481a;
 }
 
+
+.container-trn h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.container-trn p {
+    margin: 10px 0;
+    color: #646464;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.container-trn form {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-trn label {
+    margin-bottom: 10px; /* Augmenter la marge entre les étiquettes */
+    color: #555;
+    display: block; /* Assurer que les étiquettes sont affichées sur une ligne séparée */
+}
+
+.container-trn input[type="text"],
+.container-trn input[type="number"] {
+    padding: 8px; /* Ajuster la taille du padding */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Maintenir la même marge que celle des étiquettes */
+    width: 100%;
+    box-sizing: border-box; }
+
+
+.container-trn button[type="submit"] {
+    background: #0e6e26;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.container-trn button[type="submit"]:hover {
+    background: #0a481a;
+}
+
+.container-dmd {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    margin-right: 40px;
+    margin-left: 50px;
+}
+
+.container-dmd h1 {
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.container-dmd form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-dmd label {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.container-dmd select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 40px;
+    margin-top: 56PX;
+    width: 100%;
+}
+
+.container-dmd button {
+    background: #0e6e26;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px; /* Ajustement de la taille du bouton */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 50%;
+    max-width: 200px; /* Limite la largeur maximale du bouton */
+    text-align: center; /* Centre le texte du bouton */
+}
+
+.container-dmd button:hover {
+    background: #0a481a;
+}
 
 
 @keyframes fadeIn {

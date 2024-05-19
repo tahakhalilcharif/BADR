@@ -54,7 +54,7 @@ class CompteController extends Controller
         $compte->interdit_au_credit = 0;
         $compte->interdit_au_debit = 0;
         $compte->banque = '003';
-        $agenceCode = ListeAgence::where('code_agence' , $request->agence)->value('code_agence'); 
+        $agenceCode = ListeAgence::where('code_agence' , $request->agence)->value('code_agence');
         $agenceCode = str_pad($agenceCode, 5, '0', STR_PAD_LEFT);
         $compte->agence = $agenceCode;
         $compte->num_serie = substr(str_shuffle("0123456789"), 0, 7);
@@ -74,16 +74,16 @@ class CompteController extends Controller
         if (!$compte) {
             return redirect()->back()->with('error', 'Account not found.');
         }
-    
+
         $demandes = Demande::where('id_compte', $compte->id_cmpt)->get();
-    
+
         $cartes = $demandes->map(function($demande) {
             return Carte::where('id_carte', $demande->id_carte)->first();
         });
-    
+
         return view('compte.info_compte', compact('compte', 'demandes', 'cartes' ,'client'));
     }
-    
+
 
     public function activate($num_cmt)
     {
@@ -109,35 +109,35 @@ class CompteController extends Controller
         $clientActivationCode = ClientActivationCode::where('id_client', $compte->id_client)
                                                     ->where('activation_code', $activation_code)
                                                     ->first();
-    
+
         if ($compte && $clientActivationCode) {
             return view('compte.activation_page', ['compte' => $compte, 'activation_code' => $activation_code]);
         }
-    
+
         return redirect()->back()->with('error', 'Invalid activation link. Please try again.');
     }
-    
+
     public function processActivation(Request $request, $num_cmt, $activation_code)
     {
         $compte = Compte::where('num_cmt', $num_cmt)->first();
         $clientActivationCode = ClientActivationCode::where('id_client', $compte->id_client)
                                                     ->where('activation_code', $activation_code)
                                                     ->first();
-    
+
          if ($compte && $clientActivationCode) {
             if ($request->activation_code == $activation_code) {
                 $compte->statut = 'actif';
                 $compte->save();
-    
+
                 return Redirect::route('compte.info_client')->with('success', 'Account activated successfully.');
             } else {
                 return redirect()->back()->with('error', 'Invalid activation code. Please try again.');
             }
         }
-    
+
         return redirect()->back()->with('error', 'Invalid activation link. Please try again.');
     }
-    
+
     public function showProducts($id)
     {
         $compte = Compte::with('produits')->find($id);
@@ -221,4 +221,12 @@ class CompteController extends Controller
         // Redirect back with success message
         return redirect()->route('compte.info_client');
     }
+
+    
+    public function showTransactionPage($num_cmt){
+        $compte = Compte::where('num_cmt',$num_cmt)->first();
+        return view('compte.transaction' , compact('compte'));
+    }
 }
+
+

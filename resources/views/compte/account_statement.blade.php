@@ -1,14 +1,21 @@
 @extends('layouts.layout_home')
+@section('head')
+<link rel="stylesheet" href="{{ asset('css/layout.css') }}">
+<link rel="stylesheet" href="{{ asset('css/statement.css') }}">
+@endsection
 
 @section('title', 'Account Statement')
 
+
 @section('content')
-    <h2>Account Statement for Account: {{ $compte->num_cmt }}</h2>
+<div class="container-statement">
+    <h2 class="section-title">Account Statement for Account: {{ $compte->num_cmt }}</h2>
 
     @if ($transactions->isEmpty())
-        <p>No transactions found for this account.</p>
+        <p class="empty-message">No transactions found for this account.</p>
+        <img src="{{ asset('images/icone6.png') }}" class="centered-image">
     @else
-        <table class="table">
+        <table class="styled-table">
             <thead>
                 <tr>
                     <th>Transaction ID</th>
@@ -31,4 +38,7 @@
             </tbody>
         </table>
     @endif
+</div>
+
+
 @endsection

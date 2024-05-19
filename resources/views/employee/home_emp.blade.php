@@ -1,9 +1,16 @@
 @extends('layouts.layout_emp')
 
+@section('head')
+<link rel="stylesheet" href="{{ asset('css/employee.css') }}">
+<link rel="stylesheet" href="{{ asset('css/homemp.css') }}">
+
+@endsection
+
 @section('title', 'Employee Dashboard')
 
 @section('content-emp')
-    <h1>Employee Dashboard</h1>
+<h1 class="dashboard-title">Employee Dashboard</h1>
+
     <div class="container">
         <div class="row">
             <div class="col-md-4">

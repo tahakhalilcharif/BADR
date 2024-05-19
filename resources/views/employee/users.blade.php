@@ -1,8 +1,16 @@
 @extends('layouts.layout_emp')
 
+@section('head')
+
+<link rel="stylesheet" href="{{ asset('css/uniactivated_user.css') }}">
+
+@endsection
+
+
 @section('content-emp')
-    <h3>Unactivated Users</h3>
-    <table class="table">
+<div class="users-section">
+    <h3 class="section-title">Unactivated Users</h3>
+    <table class="styled-table">
         <thead>
             <tr>
                 <th>ID</th>
@@ -22,9 +30,11 @@
             @endforeach
         </tbody>
     </table>
+</div>
 
-    <h3>All Users</h3>
-    <table class="table">
+<div class="users-section">
+    <h3 class="section-title">All Users</h3>
+    <table class="styled-table">
         <thead>
             <tr>
                 <th>ID</th>
@@ -45,4 +55,6 @@
         @endforeach
         </tbody>
     </table>
+</div>
+
 @endsection

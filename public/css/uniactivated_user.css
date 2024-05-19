@@ -83,3 +83,17 @@
 .styled-table td:hover {
     background-color: #e1e1e1;
 }
+
+.section-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    margin: 20px auto;
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #f8f9fa, #e0e0e0);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    animation: fadeInSlideUp 1s ease-in-out;
+}

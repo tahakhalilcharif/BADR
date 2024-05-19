@@ -62,7 +62,7 @@ class CompteController extends Controller
 
         $compte->save();
 
-        return redirect('/')->with('success', 'Account successfully created.');
+        return redirect('/compte')->with('success', 'Account successfully created.');
     }
 
 

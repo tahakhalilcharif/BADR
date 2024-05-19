@@ -31,7 +31,6 @@ class ClientActivationController extends Controller
         $user = auth()->user() ;
         $user->update(['verified' => true]);
 
-        $clientActivation->delete();
 
         return redirect('/')->with('success', 'Your account has been activated successfully!');
     }

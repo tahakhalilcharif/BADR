@@ -46,6 +46,7 @@
             <li><a href="{{ route('employee.home_emp') }}">Home</a></li>
             <li><a href="{{ route('employee.clients') }}">Clients</a></li>
             <li><a href="{{ route('employee.users') }}">Users</a></li>
+            <li><a href="{{ route('employee.unactivated_users') }}">Code activation</a></li>
             <li><a href="{{ route('employee.demands') }}">Demands</a></li>
             <li><a href="{{ route('employee.accounts') }}">Accounts</a></li>
             <li><a href="{{ route('employee.statistics') }}">Statistics</a></li>

@@ -1,0 +1,85 @@
+/* Importer la police 'Roboto' de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Styles pour le h1 */
+.page-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin: 20px auto;
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #f8f9fa, #e0e0e0);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    animation: fadeInSlideUp 1s ease-in-out;
+}
+
+/* Animation pour le titre */
+@keyframes fadeInSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Styles pour le message vide */
+.empty-message {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: #555;
+    text-align: center;
+    margin: 20px auto;
+}
+
+/* Styles pour la table */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.styled-table thead tr {
+    background-color: #626860;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #7f817e;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.styled-table td {
+    transition: background-color 0.3s ease;
+}
+
+/* Effet de survol pour les cellules */
+.styled-table td:hover {
+    background-color: #e1e1e1;
+}

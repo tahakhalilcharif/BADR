@@ -86,6 +86,7 @@ Route::middleware(['verified_user'])->group(function () {
     Route::get('/new_account_form' , [CompteController::class ,'showForm'])->name('new_account_form');
     Route::get('/compte/{id}/demand_product', [CompteController::class, 'showOrderProductPage'])->name('compte.demand_product');
     Route::post('/compte/store_product_order/{id}', [CompteController::class, 'storeProductOrder'])->name('compte.store_product_order');
+    Route::get('/compte/{num_cmt}/statement', [CompteController::class, 'accountStatement'])->name('compte.account_statement');
 
     //Upate User Information Routes
     Route::get('/change-password', [ClientController::class, 'showChangePasswordForm'])->name('change_password');

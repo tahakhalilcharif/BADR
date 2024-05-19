@@ -32,7 +32,6 @@ class AppServiceProvider extends ServiceProvider
             }else{
                 $view->with('token', null);
             }
-            
         });
     }
 }

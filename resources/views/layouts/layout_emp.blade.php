@@ -55,5 +55,7 @@
     <div class="content">
         @yield('content-emp')
     </div>
+
+    @yield('scripts')
 </body>
 </html>

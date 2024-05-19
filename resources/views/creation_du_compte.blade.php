@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
     <link rel="stylesheet" href="{{ asset('css/form.css') }}">
 @endsection
-@section('title', 'information_client')
+@section('title', 'New Account')
 
 @section('content')
 <form action="/open_account" method="POST" class="styled-form">

@@ -30,8 +30,6 @@ Route::get('/products', function () {
     return view('products');
 })->name('products');
 
-
-
 Route::get('/services', function () {
     return view('services');
 })->name('services');
@@ -67,12 +65,6 @@ Route::post('/open_account', [CompteController::class, 'new_account']);
 
 //Rasa Chatbot Route
 Route::post('/webhooks/rest/webhook', 'App\Http\Controllers\ChatbotController@handleWebhook');
-
-
-
-//client creation routes
-Route::get('/create-client', [ClientController::class,'showClientCreationForm'])->name('client.create-form');
-Route::post('/create-client', [ClientController::class ,'createClient'])->name('client.create');
 
 //client activation routes
 Route::get('/activation-page', [ClientActivationController::class, 'showActivationPage'])->name('activation.page');
@@ -114,7 +106,7 @@ Route::middleware(['auth', 'employee'])->group(function () {
     Route::get('/employee/demands', [EmployeeController::class, 'demands'])->name('employee.demands');
     Route::get('/employee/accounts', [EmployeeController::class, 'accounts'])->name('employee.accounts');
     Route::get('/employee/statistics', [EmployeeController::class, 'statistics'])->name('employee.statistics');
-    Route::get('/employee/add-client', [EmployeeController::class, 'addClient'])->name('employee.add_client');
-    Route::post('/employee/store-client', [EmployeeController::class, 'storeClient'])->name('employee.store_client');
+    Route::get('/employee/add-client', [EmployeeController::class, 'showClientCreationForm'])->name('employee.add_client');
+    Route::post('/employee/store-client', [EmployeeController::class, 'createClient'])->name('employee.store_client');
 
 });

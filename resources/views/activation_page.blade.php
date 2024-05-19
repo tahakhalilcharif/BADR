@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('css/actpage.css') }}">
 @endsection
 
-@section('title', 'act_page')
+@section('title', 'Activation Page')
 
 @section('content')
     <div class="activation-content">

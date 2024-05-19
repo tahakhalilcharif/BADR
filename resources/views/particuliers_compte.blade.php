@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
 <link rel="stylesheet" href="{{ asset('css/particuliers.css') }}">
 @endsection
-@section('title', 'Particuliers_compte')
+@section('title', 'Individuals Accounts')
 
 
 @section('content-public')

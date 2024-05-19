@@ -75,7 +75,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function activationCode()
     {
-    return $this->hasOne(ClientActivationCode::class);
+        return $this->hasOne(ClientActivationCode::class, 'user_id');
     }
     
     

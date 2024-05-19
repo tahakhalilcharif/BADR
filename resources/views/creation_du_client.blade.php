@@ -1,5 +1,7 @@
 @extends('layouts.layout_home')
 
+@section('title', 'Client registration')
+
 @section('content')
     <h2>Client Creation</h2>
     

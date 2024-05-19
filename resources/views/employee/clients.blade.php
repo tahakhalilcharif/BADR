@@ -1,5 +1,7 @@
 @extends('layouts.layout_emp')
 
+@section('title', 'Clients')
+
 @section('content-emp')
     <h1>Clients</h1>
 
@@ -16,6 +18,7 @@
                 <th>Email</th>
                 <th>Numéro de téléphone</th>
                 <th>Adresse</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>

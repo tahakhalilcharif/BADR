@@ -4,7 +4,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/particarte.css') }}">
 @endsection
-@section('title', 'Particuliers_carte')
+@section('title', 'Individuals Cards')
 
 
 @section('content-public')

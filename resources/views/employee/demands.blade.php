@@ -6,18 +6,22 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Type</th>
+                <th>Client</th>
+                <th>Card</th>
+                <th>Account</th>
+                <th>Date</th>
                 <th>Status</th>
-                <th>Date de création</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($demands as $demand)
                 <tr>
-                    <td>{{ $demand->id }}</td>
-                    <td>{{ $demand->type }}</td>
-                    <td>{{ $demand->status }}</td>
-                    <td>{{ $demand->created_at }}</td>
+                    <td>{{ $demand->id_demande }}</td>
+                    <td>{{ $demand->client->nom }} {{ $demand->client->prenom }}</td>
+                    <td>{{ $demand->carte->libelle }}</td>
+                    <td>{{ $demand->compte->classeLibelle() }}</td>
+                    <td>{{ $demand->date_demande }}</td>
+                    <td>{{ $demand->statut }}</td>
                 </tr>
             @endforeach
         </tbody>

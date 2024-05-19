@@ -5,7 +5,8 @@
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 @endsection
-@section('title', 'BADR Bank')
+@section('title', 'BADR BANQUE - Banque de l’Agriculture et du Développement Rural
+')
 
 @section('content')
 <div id="main-container">

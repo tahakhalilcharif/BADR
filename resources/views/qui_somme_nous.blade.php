@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{ asset('css/qui-sommes-nous.css') }}">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"/>
 @endsection
-@section('title', 'about us')
+@section('title', 'About Us')
 
 
 @section('content-public')

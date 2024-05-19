@@ -71,6 +71,7 @@ Route::post('/webhooks/rest/webhook', 'App\Http\Controllers\ChatbotController@ha
 
 
 //Tries
+Route::get('/compte/transaction/{num_cmt}',[CompteController::class , 'showTransactionPage'])->name('compte.transaction');
 
 //client creation routes
 Route::get('/create-client', [ClientController::class,'showClientCreationForm'])->name('client.create-form');
@@ -111,4 +112,12 @@ Route::middleware(['verified_user'])->group(function () {
 Route::middleware(['auth', 'employee'])->group(function () {
     Route::get('/employee/home', [EmployeeController::class, 'index'])->name('employee.home_emp');
     Route::get('/employee/unactivated-users', [EmployeeController::class, 'unactivatedUsers'])->name('employee.unactivated_users');
+    Route::get('/employee/clients', [EmployeeController::class, 'clients'])->name('employee.clients');
+    Route::get('/employee/users', [EmployeeController::class, 'users'])->name('employee.users');
+    Route::get('/employee/demands', [EmployeeController::class, 'demands'])->name('employee.demands');
+    Route::get('/employee/accounts', [EmployeeController::class, 'accounts'])->name('employee.accounts');
+    Route::get('/employee/statistics', [EmployeeController::class, 'statistics'])->name('employee.statistics');
+    Route::get('/employee/add-client', [EmployeeController::class, 'addClient'])->name('employee.add_client');
+    Route::post('/employee/store-client', [EmployeeController::class, 'storeClient'])->name('employee.store_client');
+
 });

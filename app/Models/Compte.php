@@ -34,10 +34,9 @@ class Compte extends Model
 
     public $timestamps = false;
     
-    //Get the client associated with the account.
     public function client()
     {
-        return $this->belongsTo(Client::class, 'id_client');
+        return $this->belongsTo(Client::class, 'id_client', 'id_client');
     }
 
     public function hasActiveAccount()

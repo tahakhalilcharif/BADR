@@ -34,7 +34,7 @@
                     <td>{{ $compte->solde }}</td>
                     <td>{{ $compte->derniere_trn }}</td>
                     <td>{{ $compte->statut }}</td>
-                </tr>
+                    </tr>
             @endforeach
         </tbody>
     </table>

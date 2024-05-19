@@ -222,11 +222,9 @@ class CompteController extends Controller
         return redirect()->route('compte.info_client');
     }
 
-    
     public function showTransactionPage($num_cmt){
         $compte = Compte::where('num_cmt',$num_cmt)->first();
         return view('compte.transaction' , compact('compte'));
     }
+
 }
-
-

@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="{{ asset('css/uniactivated_user.css') }}">
 @endsection
 
-
 @section('content-emp')
 <h1 class="section-title">Demands</h1>
 
@@ -17,6 +16,7 @@
             <th>Account</th>
             <th>Date</th>
             <th>Status</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -28,9 +28,11 @@
                 <td>{{ $demand->compte->classeLibelle() }}</td>
                 <td>{{ $demand->date_demande }}</td>
                 <td>{{ $demand->statut }}</td>
+                <td>
+                    <a href="{{ route('employee.create_product', ['id' => $demand->id_demande]) }}" class="btn btn-success">Create Product</a>
+                </td>
             </tr>
         @endforeach
     </tbody>
 </table>
-
 @endsection

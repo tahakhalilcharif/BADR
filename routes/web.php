@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompteController;
+use App\Http\Controllers\DemandController;
 use App\Http\Controllers\ChatbotController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\InscriptionController;
@@ -111,4 +113,7 @@ Route::middleware(['auth', 'employee'])->group(function () {
     Route::post('/employee/store-client', [EmployeeController::class, 'createClient'])->name('employee.store_client');
     Route::get('/employee/client/{id}/edit', [ClientController::class, 'edit'])->name('employee.edit_client');
     Route::post('/employee/client/{id}/update', [ClientController::class, 'update'])->name('employee.update_client');
+    
+    Route::get('/employee/create-product/{id}', [ProductController::class, 'create'])->name('employee.create_product');
+    Route::post('/employee/store-product', [ProductController::class, 'store'])->name('employee.store_product');
 });

@@ -7,11 +7,14 @@
 @section('title', 'Clients')
 
 @section('content-emp')
+
 <h1 class="section-title">Clients</h1>
+
 
 <div class="mb-3">
     <a href="{{ route('employee.add_client') }}" class="btn btn-primary">Add Client</a>
 </div>
+
 
 <table class="styled-table">
     <thead>

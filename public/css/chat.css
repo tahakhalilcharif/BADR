@@ -1,13 +1,12 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-*{
-    padding:0;
+
+* {
+    padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Bouton pour ouvrir la fenêtre de discussion */
 #open-chat-button {
     position: fixed;
     bottom: 20px;
@@ -20,23 +19,16 @@
     border-radius: 50%;
     cursor: pointer;
     z-index: 1000;
-
-    /* Aligne le texte au centre du bouton */
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* Ajuste la taille du texte dans le bouton */
     font-size: 1rem;
 }
 
-
-
-
-/* Fenêtre de chat */
 .chat-window {
     position: fixed;
-    bottom: 100px;
+    bottom: 90px; 
+    right: 25px; 
     left: 75%;
     width: 300px;
     max-height: 400px;
@@ -46,13 +38,12 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     z-index: 100;
     display: none;
-    overflow: hidden;
+    flex-direction: column;
 }
 
-/* En-tête de la fenêtre de discussion */
 .chat-header {
     padding: 12px;
-    background-color: #3a3f44; /* Couleur sombre */
+    background-color: #4a8457;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -61,7 +52,6 @@
     border-top-right-radius: 8px;
 }
 
-/* Bouton de fermeture de la fenêtre */
 .close-chat-button {
     background: none;
     border: none;
@@ -70,45 +60,70 @@
     cursor: pointer;
 }
 
-/* Conteneur des messages de discussion */
 .chat-container {
     padding: 12px;
-    max-height: 700px; /* Réduisez la hauteur maximale */
+    max-height: 700px;
     overflow-y: auto;
     background-color: white;
+    flex-grow: 1;
 }
-/* Pied de la fenêtre de discussion */
+
 .chat-footer {
-    padding: 5px; /* Réduire le padding */
+    padding: 5px;
     display: flex;
     align-items: center;
-    border-top: 1px solid #ddd; /* Bordure supérieure */
+    border-top: 1px solid #ddd;
     background-color: #f0f0f0;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    height: 40px; /* Hauteur fixe */
+    height: 40px;
 }
 
-/* Champ d'entrée de texte */
 #user-input {
     flex-grow: 1;
-    padding: 6px; /* Réduisez le padding interne */
+    padding: 6px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-right: 5px; /* Réduisez la marge à droite */
+    margin-right: 5px;
 }
 
-/* Bouton d'envoi de message */
 #send-button {
-    padding: 6px 12px; /* Réduisez le padding interne */
-    background-color: #3a3f44; /* Couleur sombre */
+    padding: 6px 6px;
+    background-color: #4a8457;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s; /* Transition douce */
+    transition: background-color 0.3s;
 }
 
 #send-button:hover {
-    background-color: #2a2e33; /* Couleur légèrement plus sombre au survol */
+    background-color: #0d6729;
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.bot-message {
+    background-color: #e0e0e0;
+    align-self: flex-start;
+}
+
+.user-message {
+    background-color: #94d441;
+    color: white;
+    align-self: flex-end;
+}
+
+.message-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
 }

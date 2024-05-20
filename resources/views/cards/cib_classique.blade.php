@@ -9,45 +9,45 @@
     <title>@yield('title' , 'Page Title')</title>
 </head>
 <body>
-    <div class="card-containter">
-        <div class="card">
-            <div class="card-inner">
-                <div class="front">
-                    <img src="{{ asset('images/map.png') }}" alt="map" class="map-img">
-                    <div class="row">
+    <div class="card-containter_cib_c">
+        <div class="card_cib_c">
+            <div class="card-inner_cib_c">
+                <div class="front_cib_c">
+                    <img src="{{ asset('images/map.png') }}" alt="map" class="map-img_cib_c">
+                    <div class="row_cib_c">
                         <img src="{{ asset('images/chip.png') }}" alt="chip" width="60px">
                         <img src="{{ asset('images/badr.png') }}" alt="badr" width="80px">
                         <img src="{{ asset('images/cib.png') }}" alt="cib" width="50px">
                     </div>
 
-                    <div class="row no-card">
+                    <div class="row_cib_c no-card_cib_c">
                         <p>{{ implode(' ', str_split($produit->numero_carte, 4)) }}</p>
                     </div>
-                    <div class="row card-holder">
+                    <div class="row_cib_c card-holder_cib_c">
                         <p>Card Holder</p>
                         <p>Valid Until</p>
                     </div>
-                    <div class="row">
-                        <p class="card-holder-information">
+                    <div class="row_cib_c">
+                        <p class="card-holder-information_cib_c">
                             {{$client->nom}} {{$client->prenom}}
                         </p>
                         {{ date('m/y', strtotime($produit->date_expiration)) }}
                     </div>
                 </div>
-                <div class="back">
-                    <img src="{{ asset('images/map.png') }}" alt="map" class="map-img">
-                    <div class="bar"></div>
-                    <div class="row card-cvv2">
+                <div class="back_cib_c">
+                    <img src="{{ asset('images/map.png') }}" alt="map" class="map-img_cib_c">
+                    <div class="bar_cib_c"></div>
+                    <div class="row_cib_c card-cvv2_cib_c">
                         <div>
                             <img src="{{ asset('images/pattern.png') }}" alt="pattern">
                         </div>
                         <p> {{$produit->cvv2}} </p>
                     </div>
-                    <div class="row card-text">
+                    <div class="row_cib_c card-text_cib_c">
                         <p>BADR Bank - Algeria Head office 17, Bd Colonel Amirouche, B.P 484, Algiers.
                         </p>
                     </div>
-                    <div class="row signature">
+                    <div class="row_cib_c signature_cib_c">
                         <p>CUSTOMER SIGNATURE</p>
                         <img src="{{ asset('images/badr.png') }}" alt="badr" width="60px" height="60px">
                     </div>

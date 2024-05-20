@@ -34,7 +34,7 @@ class ChatbotController extends Controller
         if (!$compte) {
             return response()->json(['error' => 'Compte not found or not active'], 404);
         }
-        //$compte = Compte::where('id_cmpt',7)->first();
+        
         $balance = $compte->solde;
     
         return response()->json(['balance' => $balance], 200);

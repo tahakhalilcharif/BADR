@@ -20,22 +20,8 @@
                 <a class="navbar-brand" href="#">
                     <img src="{{ asset('images/logobadr.png') }}" alt="BADR BANQUE">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav ms-auto">
-                        <ul>
-                        
-                            <li class="badr-nav-link nav-link">
-                                <form action="/logout" method="GET">
-                                    @csrf
-                                    <a href="/logout">Logout</a>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+
+
             </div>
         </nav>
     </header>
@@ -48,6 +34,16 @@
             <li><a href="{{ route('employee.users') }}">Users</a></li>
             <li><a href="{{ route('employee.demands') }}">Demands</a></li>
             <li><a href="{{ route('employee.accounts') }}">Accounts</a></li>
+
+
+                        <li class="badr-nav-link nav-link">
+                            <form action="/logout" method="GET">
+                                @csrf
+                                <a href="/logout">Logout</a>
+                            </form>
+                        </li>
+        
+
         </ul>
     </div>
 

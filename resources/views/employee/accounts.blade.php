@@ -9,7 +9,6 @@
 
 @section('content-emp')
 <h1 class="page-title">Accounts</h1>
-
 @if ($accounts->isEmpty())
     <p class="empty-message">No accounts available.</p>
 @else
@@ -29,15 +28,22 @@
             @foreach ($accounts as $account)
                 <tr>
                     <td>{{ $account->client ? $account->client->nom : 'N/A' }}</td>
-                    <td>{{$account->classeLibelle()}}</td>
+                    <td>{{ $account->classeLibelle() }}</td>
                     <td>{{ $account->num_cmt }}</td>
                     <td>{{ $account->solde }}</td>
                     <td>{{ $account->date_ouv }}</td>
                     <td>{{ $account->derniere_trn }}</td>
-                    <td>{{ $account->statut }}</td>
+                    <td class="equal-height-btn">
+                        @if ($account->statut == 'actif')
+                            <button type="button" class="btn btn-success">{{ $account->statut }}</button>
+                        @else
+                            <button type="button" class="btn btn-danger">{{ $account->statut }}</button>
+                        @endif
+                    </td>
                 </tr>
             @endforeach
         </tbody>
+
     </table>
 @endif
 

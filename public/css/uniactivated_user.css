@@ -4,7 +4,7 @@
 /* Styles pour le h1 */
 .page-title {
     font-family: 'Roboto', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #333;
     text-align: center;
     margin: 20px auto;
@@ -96,4 +96,22 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     display: inline-block;
     animation: fadeInSlideUp 1s ease-in-out;
+}
+.btn-success {
+    background-color: #28a745; /* Couleur verte */
+    border-color: #28a745; /* Bordure verte */
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.equal-height-btn {
+    display: flex;
+    align-items: center;
+}
+
+.equal-height-btn .btn {
+    flex-grow: 1;
 }

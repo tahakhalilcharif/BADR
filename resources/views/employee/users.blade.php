@@ -9,6 +9,7 @@
 
 @section('content-emp')
 
+
 @if ($unactivated_users->isNotEmpty())
 <div class="users-section">
     <h3 class="section-title">Unactivated Users</h3>
@@ -26,8 +27,8 @@
                 <tr>
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ optional($user->activationCode)->activation_code }}</td>
-                    <td>{{ $user->verified ? 'Yes' : 'No' }}</td>
+                    <td class="text-success">{{ optional($user->activationCode)->activation_code }}</td> <!-- Ajout de la classe de couleur verte -->
+                    <td class="text-danger">{{ $user->verified ? 'Yes' : 'No' }}</td> <!-- Ajout de la classe de couleur rouge -->
                 </tr>
             @endforeach
         </tbody>

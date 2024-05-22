@@ -1,0 +1,99 @@
+/* General styling for the page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Styling for account details section */
+.account-details {
+    background-color: #ffffff;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+}
+
+.account-details h1 {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.account-details .divider {
+    height: 2px;
+    background-color: #dddddd;
+    margin: 10px 0;
+}
+
+.account-details p {
+    font-size: 16px;
+    color: #ffffff;
+    margin: 5px 0;
+}
+
+.account-details h2 {
+    font-size: 20px;
+    color: #333333;
+    margin-top: 20px;
+}
+
+.account-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.account-details ul li {
+    background-color: #fafafa;
+    border: 1px solid #eeeeee;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+}
+
+.account-details ul li h4 {
+    font-size: 18px;
+    color: #333333;
+}
+
+.account-details ul li p {
+    font-size: 14px;
+    color: #666666;
+}
+
+/* Styling for account actions section */
+.account-actions {
+    background-color: #ffffff;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+}
+
+.account-actions h2 {
+    font-size: 20px;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.account-actions ul {
+    list-style: none;
+    padding: 0;
+}
+
+.account-actions ul li {
+    margin: 10px 0;
+}
+
+.account-actions ul li a {
+    font-size: 16px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.account-actions ul li a:hover {
+    text-decoration: underline;
+}

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Compte;
+use App\Models\Wilaya;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -53,5 +54,10 @@ class Client extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function wilaya()
+    {
+        return $this->belongsTo(Wilaya::class);
     }
 }

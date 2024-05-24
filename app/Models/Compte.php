@@ -5,6 +5,8 @@ namespace App\Models;
 use App\Models\Client;
 use App\Models\Demande;
 use App\Models\Produit;
+use App\Models\ListeAgence;
+use App\Models\ClasseCompte;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -63,6 +65,16 @@ class Compte extends Model
     public function demandes()
     {
         return $this->hasMany(Demande::class, 'id_compte');
+    }
+
+    public function listeagence()
+    {
+        return $this->belongsTo(ListeAgence::class);
+    }
+
+    public function classecompte()
+    {
+        return $this->belongsTo(ClasseCompte::class);
     }
 
 }

@@ -76,8 +76,8 @@
                                     Individuals
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('particuliers_compte') }}">Compte</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('particuliers_carte') }}">Carte</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('particuliers_compte') }}">Account</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('particuliers_carte') }}">Card</a></li>
                                 </ul>
                             </li>
                             <!-- Autres éléments de menu -->
@@ -86,8 +86,8 @@
                                     Businesses
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('entreprises_compte') }}">Compte</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('entreprises_carte') }}">Carte</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('entreprises_compte') }}">Account</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('entreprises_carte') }}">Card</a></li>
                                 </ul>
                             </li>
                             <li class="badr-nav-link nav-link">
@@ -125,9 +125,9 @@
                 <button id="send-button">Send</button>
             </div>
         </div>
-        
-        
-        
+
+
+
     </div>
 
     <footer>
@@ -266,8 +266,8 @@
     </script>
 
 
-    
-    
+
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

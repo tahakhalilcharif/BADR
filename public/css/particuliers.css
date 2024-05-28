@@ -16,20 +16,37 @@
 
 .wrapper {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    border: none;
-    margin: 10px 0;
+    align-items: center;
+    width: 60%;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 15px;
+    background: linear-gradient(to right, #f0f0f0, #fdfdfd);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 
 .wrapper img {
-    width: 30%;
+    width: 45%;
     height: auto;
-    border-radius: 8px;
-    box-shadow: none;
-    order: 2;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-right: 30px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
+
+.wrapper img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.text-box {
+    flex: 1;
+    font-family: Arial, sans-serif;
+    margin-left: 30px; }
+
 
 
 .wrapper .text-box {
@@ -65,7 +82,7 @@
 
 
 details {
-    width: 80%;
+    width: 40%;
     margin-left: 40PX;
     padding: 10px;
     background-color: #f9f9f9;

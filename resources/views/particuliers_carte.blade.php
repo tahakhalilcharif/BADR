@@ -11,7 +11,7 @@
     <div id="myWrapper">
 
         <div class="wrapper">
-            <img src="{{ asset('images/cibgold.jpg') }}" alt="Carte d'affaires Badr">
+           
             <img src="{{ asset('images/cibclassique.jpg') }}" alt="Carte d'affaires Badr">
 
             <div class="text-box">
@@ -55,7 +55,7 @@
 
 
         <div class="wrapper">
-            <img src="{{ asset('images/masteercard.jpg') }}" alt="Carte d'affaires Badr">
+
             <img src="{{ asset('images/titanuimcard.jpg') }}" alt="Carte d'affaires Badr">
 
             <div class="text-box">

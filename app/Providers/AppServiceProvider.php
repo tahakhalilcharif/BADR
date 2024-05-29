@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Employee;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -32,6 +33,12 @@ class AppServiceProvider extends ServiceProvider
             }else{
                 $view->with('token', null);
             }
+        });
+
+        View::composer('layouts.layout_emp', function ($view) {
+            $user = auth()->user();
+            $employee = Employee::where('user_id',$user->id)->first();
+            $view->with('employee', $employee);
         });
     }
 }

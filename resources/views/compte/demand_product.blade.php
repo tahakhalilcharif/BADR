@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="{{ asset('css/info_client.css') }}">
 @endsection
 
+@section('title' , 'Order a Product')
+
 @section('content')
     <div class="container-dmd">
         <h1>Order Product for Account: {{ $compte->num_cmt }}</h1>

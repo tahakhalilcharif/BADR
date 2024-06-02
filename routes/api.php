@@ -15,4 +15,9 @@ Route::post('/register' , [AuthController::class,'register']);
 
 Route::group(['middleware' => ['auth:sanctum']],function(){
     Route::get('/balance', [ChatbotController::class, 'getBalance']);
+    Route::get('/transactions', [ChatbotController::class, 'getTransactions']);
+    Route::post('/transfer', [ChatbotController::class, 'transfer']); // Changed to POST
+    Route::get('/account_details', [ChatbotController::class, 'getAccountDetails']);
+    Route::get('/order_product', [ChatbotController::class, 'OrderProduct']);
+    Route::get('/check_status', [ChatbotController::class, 'CheckStatus']);
 });

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="{{ asset('css/info_client.css') }}">
 @endsection
 
+@section('title' , 'Display Products')
+
 @section('content')
     <div class="container">
         <h3>Products Associated with Account {{ $compte->num_cmt }}</h3>

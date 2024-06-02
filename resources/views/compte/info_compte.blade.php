@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{ asset('css/info_client.css') }}">
 @endsection
 
-@section('title', 'information_compte')
+@section('title', 'Account Details')
 
 @section('content')
 @auth

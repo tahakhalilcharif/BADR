@@ -156,7 +156,7 @@ class CompteController extends Controller
         $request->validate([
             'recipient_account_number' => 'required|exists:comptes,num_cmt',
             'amount' => 'required|numeric|min:1',
-            'source_account_id' => 'required|exists:comptes,id_cmpt',  // Add validation for source_account_id
+            'source_account_id' => 'required|exists:comptes,id_cmpt',
         ]);
     
         $user = auth()->user();
@@ -177,25 +177,32 @@ class CompteController extends Controller
             return redirect()->back()->with('error', 'Insufficient balance.');
         }
     
-        $sourceAccount->solde -= $request['amount'];
-        $recipientAccount->solde += $request['amount'];
-    
-        $sourceAccount->save();
-        $recipientAccount->save();
+
     
         $transactionS = new Transaction();
-        $transactionS->id_compte_source = $sourceAccount->id_cmpt;  // Use primary key
-        $transactionS->id_compte_destination = $recipientAccount->id_cmpt;  // Use primary key
+        $transactionS->id_compte_source = $sourceAccount->id_cmpt; 
+        $transactionS->id_compte_destination = $recipientAccount->id_cmpt;  
         $transactionS->montant = $request['amount'];
         $transactionS->type = 'D';
+        $transactionS->date_trn = now();
         $transactionS->save();
     
         $transactionD = new Transaction();
-        $transactionD->id_compte_source = $recipientAccount->id_cmpt;  // Use primary key
-        $transactionD->id_compte_destination = $sourceAccount->id_cmpt;  // Use primary key
+        $transactionD->id_compte_source = $recipientAccount->id_cmpt;  
+        $transactionD->id_compte_destination = $sourceAccount->id_cmpt;
         $transactionD->montant = $request['amount'];
         $transactionD->type = 'C';
+        $transactionD->date_trn = now();
         $transactionD->save();
+
+        if($transactionD && $transactionS){
+            $sourceAccount->solde -= $request['amount'];
+            $recipientAccount->solde += $request['amount'];
+        
+            $sourceAccount->save();
+            $recipientAccount->save();
+        }
+
     
         return redirect()->back()->with('success', 'Money transferred successfully.');
     }

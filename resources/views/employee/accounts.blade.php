@@ -6,6 +6,8 @@
 
 @endsection
 
+@section('title' , 'Accounts')
+
 
 @section('content-emp')
 <h1 class="page-title">Accounts</h1>

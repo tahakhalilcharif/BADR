@@ -1,5 +1,7 @@
 @extends('layouts.layout_emp')
 
+
+
 @section('content-emp')
 <h2>Create Product</h2>
 <div class="container">

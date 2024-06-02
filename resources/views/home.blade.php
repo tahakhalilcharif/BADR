@@ -3,6 +3,7 @@
 @section('head')
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <link rel="stylesheet" href="{{ asset('css/homeclient.css') }}">
 @endsection
 @section('title', 'BADR BANQUE - Banque de l’Agriculture et du Développement Rural
@@ -99,6 +100,38 @@
 
                 </div>
             </a>
+
+            <a href="https://airalgeriecargo.dz/" class="quick-action-item">
+                <div class="action-box">
+                    <img src="{{ asset('images/airalgerie.png') }}" alt="Facture 2">
+
+                </div>
+            </a>
+
+
+            <a href="https://tassiliairlines.dz/" class="quick-action-item">
+                <div class="action-box">
+                    <img src="{{ asset('images/tassili.png') }}" alt="Facture 2">
+
+                </div>
+            </a>
+
+
+            <a href="https://caat.dz/index.php/fr/" class="quick-action-item">
+                <div class="action-box">
+                    <img src="{{ asset('images/caat.png') }}" alt="Facture 2">
+
+                </div>
+            </a>
+
+
+            <a href="https://www.saa.dz/" class="quick-action-item">
+                <div class="action-box">
+                    <img src="{{ asset('images/saa.png') }}" alt="Facture 2">
+
+                </div>
+            </a>
+
 
         </div>
     </section>

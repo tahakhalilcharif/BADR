@@ -71,6 +71,13 @@ body {
     justify-content: flex-end; /* Alignement à droite */
 }
 
+.topbar p {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    display: flex; /* Utilisation de Flexbox pour aligner les icônes et les textes */
+    align-items: center; 
+}
 
 .admin-icon {
     color: #fffbfb;

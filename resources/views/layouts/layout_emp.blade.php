@@ -18,7 +18,7 @@
         <div class="admin-icon">
             <i class="fas fa-user-tie"></i>
         </div>
-        <p>nom</p>
+        <p>Admin</p>
     </div>
 
 

@@ -1,0 +1,183 @@
+/* CSS Moderne et Compact pour la page client */
+
+/* Général */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #444;
+}
+
+#main-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Sections */
+section {
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Titres */
+h1.welcome-title {
+    font-weight: 500;
+    color: #2c3e50;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+h2.section-title {
+    font-weight: 500;
+    color: #2c3e50;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Texte de bienvenue */
+.welcome-text {
+    font-size: 1em;
+    color: #7f8c8d;
+}
+
+/* Solde */
+.balance {
+    font-size: 1.2em;
+    color: #27ae60;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.balance-amount {
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+/* Services */
+.services-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.service-item {
+    flex: 1;
+    min-width: 120px;
+    max-width: 180px;
+    background: #ecf0f1;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+.service-item img {
+    max-width: 60%; /* Ajustement de la largeur maximale */
+    height: auto;
+    margin-bottom: 5px;
+}
+.service-item:hover {
+    background: #f7f44c;
+}
+
+.service-title {
+    font-size: 1em;
+    color: #34495e;
+}
+
+
+
+
+/* Taux de change */
+.exchange-rates-section {
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.exchange-rates {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.exchange-rate {
+    flex-basis: calc(33.33% - 10px); /* Pour occuper environ le tiers de la largeur avec un espacement entre les éléments */
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.currency-title {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 1.1em; /* Taille de police légèrement plus grande */
+}
+
+.rate {
+    margin: 0;
+    font-size: 1.1em; /* Taille de police légèrement plus grande */
+}
+
+.rate-red {
+    color: red; /* Couleur du texte en rouge */
+}
+
+/* Quick Action */
+.quick-action-section {
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.quick-action-item {
+    flex-basis: calc(50% - 10px); /* Pour occuper la moitié de la largeur avec un espacement entre les éléments */
+    text-decoration: none; /* Suppression du soulignement par défaut */
+}
+
+.action-box {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    transition: background 0.3s;
+    text-align: center;
+}
+
+.action-box:hover {
+    background: #e0e0e0; /* Changement de couleur au survol */
+}
+
+.action-title {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.action-box img {
+    max-width: 100%;
+    max-height: 80px; /* Réduire la hauteur maximale de l'image */
+    height: auto;
+    cursor: pointer; /* Curseur pointeur au survol de l'image */
+}
